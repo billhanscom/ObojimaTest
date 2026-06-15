@@ -9,7 +9,7 @@ app = Flask(__name__)
 BASE_DIR = Path(__file__).resolve().parent
 
 # Load potion names and ingredient data from JSON files
-with open(BASE_DIR / 'potion_names.json') as f:
+with open(BASE_DIR / 'potion_names.json', encoding='utf-8') as f:
     potion_names_data = json.load(f)
 
 combat_names = potion_names_data["combat_names"]
@@ -21,10 +21,15 @@ for dataset_name, filename in {
     '2014': 'ingredients_2014.json',
     '2024': 'ingredients_2024.json'
 }.items():
-    with open(BASE_DIR / filename) as f:
+    with open(BASE_DIR / filename, encoding='utf-8') as f:
         DATASETS[dataset_name] = json.load(f)
 
 DEFAULT_DATASET = '2024'
+
+
+def normalize_dataset(value):
+    value = str(value or DEFAULT_DATASET)
+    return value if value in DATASETS else DEFAULT_DATASET
 
 
 def normalize_rarity(rarity):
@@ -41,11 +46,11 @@ def normalize_rarity(rarity):
 # Helper function to sort recipes numerically by potion number
 def extract_number(potion_name):
     match = re.match(r"(\d+)", potion_name)
-    return int(match.group(0)) if match else float('inf')  # Sort "Unknown" or non-numeric values last
+    return int(match.group(0)) if match else float('inf')
 
 
 def get_ingredient_data(dataset):
-    return DATASETS.get(dataset, DATASETS[DEFAULT_DATASET])
+    return DATASETS[normalize_dataset(dataset)]
 
 
 def split_ingredients_by_rarity(ingredient_data):
@@ -71,7 +76,8 @@ def index():
 
 @app.route('/ingredients-data')
 def ingredients_data():
-    dataset = request.args.get('dataset', DEFAULT_DATASET)
+    # Supports both names so older JS and newer JS both work.
+    dataset = request.args.get('dataset') or request.args.get('year') or DEFAULT_DATASET
     return jsonify(get_ingredient_data(dataset))
 
 
@@ -79,8 +85,9 @@ def ingredients_data():
 @app.route('/get-recipes', methods=['POST'])
 def get_recipes():
     payload = request.get_json() or {}
-    user_ingredients = payload.get('ingredients', [])  # Get selected ingredients
-    dataset = payload.get('dataset', DEFAULT_DATASET)
+    user_ingredients = payload.get('ingredients', [])
+    # Supports both names so older JS and newer JS both work.
+    dataset = payload.get('dataset') or payload.get('year') or DEFAULT_DATASET
     ingredient_data = get_ingredient_data(dataset)
 
     # Filter selected ingredient details from JSON data
@@ -104,13 +111,11 @@ def get_recipes():
 
         # Add recipes to the result only if a valid potion type is determined
         for potion_type, potion_value in recipe_types:
-            # Fetch the appropriate potion name from the dictionary (using string for lookup)
-            potion_name = ""
             if potion_type == "Combat":
                 potion_name = f"{potion_value}. {combat_names.get(str(potion_value), 'No matching potion')}"
             elif potion_type == "Utility":
                 potion_name = f"{potion_value}. {utility_names.get(str(potion_value), 'No matching potion')}"
-            elif potion_type == "Whimsy":
+            else:
                 potion_name = f"{potion_value}. {whimsy_names.get(str(potion_value), 'No matching potion')}"
 
             recipe = {
@@ -132,7 +137,6 @@ def get_recipes():
     for potion_list in possible_recipes.values():
         potion_list.sort(key=lambda x: extract_number(x['potion_type']))
 
-    # Return list of possible recipes as JSON
     return jsonify(possible_recipes)
 
 

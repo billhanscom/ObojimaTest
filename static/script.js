@@ -36,17 +36,21 @@ function toggleValuesYear() {
 }
 
 function updateValuesToggleButton() {
-    const toggleButton = document.getElementById("values-toggle-button");
-
-    if (!toggleButton) return;
-
-    toggleButton.textContent = currentValuesYear === "2024"
-        ? "Use 2014 Values"
-        : "Use 2024 Values";
+    document.querySelectorAll(".values-toggle-button").forEach(toggleButton => {
+        toggleButton.textContent = currentValuesYear === "2024"
+            ? "Use 2014 Values"
+            : "Use 2024 Values";
+    });
 }
 
 async function loadIngredientButtonsForCurrentYear() {
-    const response = await fetch(`/ingredients-data?year=${currentValuesYear}`);
+    const response = await fetch(`/ingredients-data?dataset=${currentValuesYear}`);
+
+    if (!response.ok) {
+        console.error(`Failed to load ingredient data: ${response.status}`);
+        return;
+    }
+
     const ingredients = await response.json();
 
     const ingredientMap = {};
@@ -58,10 +62,13 @@ async function loadIngredientButtonsForCurrentYear() {
         const ingredientName = button.getAttribute("data-ingredient");
         const ingredient = ingredientMap[ingredientName];
 
-        if (!ingredient) return;
+        if (!ingredient) {
+            console.warn(`No ${currentValuesYear} ingredient data found for: ${ingredientName}`);
+            return;
+        }
 
         button.setAttribute("data-rarity", ingredient.rarity);
-
+        button.setAttribute("data-ingredient", ingredient.name);
         button.innerHTML = `${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
     });
 }
@@ -77,9 +84,14 @@ async function findRecipes() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             ingredients: selectedIngredients,
-            year: currentValuesYear
+            dataset: currentValuesYear
         })
     });
+
+    if (!response.ok) {
+        console.error(`Failed to get recipes: ${response.status}`);
+        return;
+    }
 
     const recipes = await response.json();
     const resultsDiv = document.getElementById('results');
