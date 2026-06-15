@@ -1,11 +1,19 @@
 let selectedIngredients = [];
+let currentValuesYear = localStorage.getItem("obojimaValuesYear") || "2024";
 
 // Toggle selection for ingredient buttons
 document.addEventListener("DOMContentLoaded", () => {
+    setupIngredientButtons();
+    updateValuesToggleButton();
+    loadIngredientButtonsForCurrentYear();
+});
+
+function setupIngredientButtons() {
     document.querySelectorAll(".ingredient-button").forEach(button => {
         button.addEventListener("click", () => {
             const ingredient = button.getAttribute("data-ingredient");
             const rarityClass = button.getAttribute("data-rarity");
+
             button.classList.toggle("selected");
             button.classList.toggle(rarityClass);
 
@@ -14,29 +22,66 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 selectedIngredients.push(ingredient);
             }
-            console.log("Selected Ingredients:", selectedIngredients); // Debug log to verify selection
         });
     });
-});
+}
+
+function toggleValuesYear() {
+    currentValuesYear = currentValuesYear === "2024" ? "2014" : "2024";
+    localStorage.setItem("obojimaValuesYear", currentValuesYear);
+
+    clearSelection();
+    updateValuesToggleButton();
+    loadIngredientButtonsForCurrentYear();
+}
+
+function updateValuesToggleButton() {
+    const toggleButton = document.getElementById("values-toggle-button");
+
+    if (!toggleButton) return;
+
+    toggleButton.textContent = currentValuesYear === "2024"
+        ? "Use 2014 Values"
+        : "Use 2024 Values";
+}
+
+async function loadIngredientButtonsForCurrentYear() {
+    const response = await fetch(`/ingredients-data?year=${currentValuesYear}`);
+    const ingredients = await response.json();
+
+    const ingredientMap = {};
+    ingredients.forEach(ingredient => {
+        ingredientMap[ingredient.name] = ingredient;
+    });
+
+    document.querySelectorAll(".ingredient-button").forEach(button => {
+        const ingredientName = button.getAttribute("data-ingredient");
+        const ingredient = ingredientMap[ingredientName];
+
+        if (!ingredient) return;
+
+        button.setAttribute("data-rarity", ingredient.rarity);
+
+        button.innerHTML = `${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
+    });
+}
 
 async function findRecipes() {
-    // Display alert if less than three ingredients are selected
     if (selectedIngredients.length < 3) {
         alert("Oops! Please select at least three ingredients.");
         return;
     }
 
-    // Send selected ingredients to the backend
-    console.log("Sending ingredients:", selectedIngredients); // Debug log before request
     const response = await fetch('/get-recipes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ingredients: selectedIngredients })
+        body: JSON.stringify({
+            ingredients: selectedIngredients,
+            year: currentValuesYear
+        })
     });
 
     const recipes = await response.json();
-    console.log("Received recipes:", recipes); // Debug log for response data
-
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '';
 
@@ -49,39 +94,20 @@ async function findRecipes() {
     ["Combat", "Utility", "Whimsy"].forEach(type => {
         const column = document.createElement('div');
         column.classList.add('recipe-column');
-        column.innerHTML = `<h3 class="recipe-title">${columnHeaders[type]}</h3>`;
+        column.innerHTML = `<h3>${columnHeaders[type]}</h3>`;
 
-        if (recipes[type]) {
-            for (const [potionName, potionData] of Object.entries(recipes[type])) {
-                const potionContainer = document.createElement('div');
-                potionContainer.classList.add('potion-container');
+        if (recipes[type] && recipes[type].length > 0) {
+            column.innerHTML += recipes[type].map(recipe => {
+                const ingredientsList = recipe.ingredients.map(ing => {
+                    const rarityClass = ing.rarity.toLowerCase();
 
-                const recipeLabel = potionData.count === 1 ? "1 recipe" : `${potionData.count} recipes`;
-                potionContainer.innerHTML = `<h4 class="potion-header">${potionName} (${recipeLabel}) <span class="toggle-arrow">▲</span></h4>`;
-
-                const recipeDetails = document.createElement('div');
-                recipeDetails.classList.add('recipe-details');
-                recipeDetails.style.display = 'none';
-
-                recipeDetails.innerHTML = potionData.recipes.map((recipe, index) => {
-                    const ingredientsList = recipe.ingredients.map(ing => {
-                        const rarityClass = ing.rarity.toLowerCase();
-                        return `<li class="ingredient ${rarityClass}">${ing.name} [${ing.combat}/${ing.utility}/${ing.whimsy}]</li>`;
-                    }).join('');
-                    return `<h5>Recipe ${index + 1} ${recipe.attribute_totals}</h5><ul>${ingredientsList}</ul>`;
+                    return `<li class="ingredient ${rarityClass}">
+                        ${ing.name} [${ing.combat}-${ing.utility}-${ing.whimsy}]
+                    </li>`;
                 }).join('');
 
-                const header = potionContainer.querySelector('.potion-header');
-                const toggleArrow = header.querySelector('.toggle-arrow');
-                header.addEventListener('click', () => {
-                    recipeDetails.style.display = recipeDetails.style.display === 'none' ? 'block' : 'none';
-                    toggleArrow.classList.toggle('expanded');
-                    toggleArrow.textContent = recipeDetails.style.display === 'none' ? '▲' : '▼';
-                });
-
-                potionContainer.appendChild(recipeDetails);
-                column.appendChild(potionContainer);
-            }
+                return `<h4>${recipe.potion_type} ${recipe.attribute_totals}</h4><ul>${ingredientsList}</ul>`;
+            }).join('');
         } else {
             column.innerHTML += '<p>No recipes found</p>';
         }
@@ -94,8 +120,10 @@ async function findRecipes() {
 
 function clearSelection() {
     selectedIngredients = [];
+
     document.querySelectorAll(".ingredient-button").forEach(button => {
         button.classList.remove("selected", "common", "uncommon", "rare");
     });
+
     document.getElementById("results").innerHTML = '';
 }

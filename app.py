@@ -2,45 +2,92 @@ from flask import Flask, request, jsonify, render_template
 import json
 from itertools import combinations
 import re
+from pathlib import Path
 
 app = Flask(__name__)
 
+BASE_DIR = Path(__file__).resolve().parent
+
 # Load potion names and ingredient data from JSON files
-with open('potion_names.json') as f:
+with open(BASE_DIR / 'potion_names.json') as f:
     potion_names_data = json.load(f)
 
 combat_names = potion_names_data["combat_names"]
 utility_names = potion_names_data["utility_names"]
 whimsy_names = potion_names_data["whimsy_names"]
 
-with open('ingredients.json') as f:
-    ingredient_data = json.load(f)
+DATASETS = {}
+for dataset_name, filename in {
+    '2014': 'ingredients_2014.json',
+    '2024': 'ingredients_2024.json'
+}.items():
+    with open(BASE_DIR / filename) as f:
+        DATASETS[dataset_name] = json.load(f)
+
+DEFAULT_DATASET = '2024'
+
+
+def normalize_rarity(rarity):
+    rarity = str(rarity).lower()
+    if rarity in ('c', 'common'):
+        return 'common'
+    if rarity in ('u', 'uncommon'):
+        return 'uncommon'
+    if rarity in ('r', 'rare'):
+        return 'rare'
+    return rarity
+
 
 # Helper function to sort recipes numerically by potion number
 def extract_number(potion_name):
     match = re.match(r"(\d+)", potion_name)
     return int(match.group(0)) if match else float('inf')  # Sort "Unknown" or non-numeric values last
 
+
+def get_ingredient_data(dataset):
+    return DATASETS.get(dataset, DATASETS[DEFAULT_DATASET])
+
+
+def split_ingredients_by_rarity(ingredient_data):
+    common_ingredients = [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'common']
+    uncommon_ingredients = [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'uncommon']
+    rare_ingredients = [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'rare']
+    return common_ingredients, uncommon_ingredients, rare_ingredients
+
+
 # Route to the main page to display the ingredient selection form
 @app.route('/')
 def index():
-    # Separate ingredients by rarity for display in columns
-    common_ingredients = [ing for ing in ingredient_data if ing['rarity'] == 'common']
-    uncommon_ingredients = [ing for ing in ingredient_data if ing['rarity'] == 'uncommon']
-    rare_ingredients = [ing for ing in ingredient_data if ing['rarity'] == 'rare']
-    return render_template('index.html', common_ingredients=common_ingredients,
-                           uncommon_ingredients=uncommon_ingredients, rare_ingredients=rare_ingredients)
+    ingredient_data = get_ingredient_data(DEFAULT_DATASET)
+    common_ingredients, uncommon_ingredients, rare_ingredients = split_ingredients_by_rarity(ingredient_data)
+    return render_template(
+        'index.html',
+        common_ingredients=common_ingredients,
+        uncommon_ingredients=uncommon_ingredients,
+        rare_ingredients=rare_ingredients,
+        default_dataset=DEFAULT_DATASET
+    )
+
+
+@app.route('/ingredients-data')
+def ingredients_data():
+    dataset = request.args.get('dataset', DEFAULT_DATASET)
+    return jsonify(get_ingredient_data(dataset))
+
 
 # Calculate all possible recipes based on selected ingredients
 @app.route('/get-recipes', methods=['POST'])
 def get_recipes():
-    user_ingredients = request.json['ingredients']  # Get selected ingredients
+    payload = request.get_json() or {}
+    user_ingredients = payload.get('ingredients', [])  # Get selected ingredients
+    dataset = payload.get('dataset', DEFAULT_DATASET)
+    ingredient_data = get_ingredient_data(dataset)
 
     # Filter selected ingredient details from JSON data
     selected_ingredients = [ing for ing in ingredient_data if ing['name'] in user_ingredients]
 
-    # Dictionary to store unique potions and their permutations count
-    possible_recipes = {'Combat': {}, 'Utility': {}, 'Whimsy': {}}
+    # Calculate all possible recipes from every combination of three ingredients
+    possible_recipes = {'Combat': [], 'Utility': [], 'Whimsy': []}
     for combo in combinations(selected_ingredients, 3):
         total_combat = sum([ing['combat'] for ing in combo])
         total_utility = sum([ing['utility'] for ing in combo])
@@ -57,7 +104,8 @@ def get_recipes():
 
         # Add recipes to the result only if a valid potion type is determined
         for potion_type, potion_value in recipe_types:
-            # Fetch the appropriate potion name from the dictionary
+            # Fetch the appropriate potion name from the dictionary (using string for lookup)
+            potion_name = ""
             if potion_type == "Combat":
                 potion_name = f"{potion_value}. {combat_names.get(str(potion_value), 'No matching potion')}"
             elif potion_type == "Utility":
@@ -65,34 +113,28 @@ def get_recipes():
             elif potion_type == "Whimsy":
                 potion_name = f"{potion_value}. {whimsy_names.get(str(potion_value), 'No matching potion')}"
 
-            # Initialize potion entry if not exists
-            if potion_name not in possible_recipes[potion_type]:
-                possible_recipes[potion_type][potion_name] = {"count": 0, "recipes": []}
-
-            # Increment count and add recipe
-            possible_recipes[potion_type][potion_name]["count"] += 1
             recipe = {
-                "attribute_totals": f"[{total_combat}/{total_utility}/{total_whimsy}]",
+                "potion_type": potion_name,
+                "attribute_totals": f"[{total_combat}-{total_utility}-{total_whimsy}]",
                 "ingredients": [
                     {
                         "name": ing["name"],
-                        "rarity": ing["rarity"],
+                        "rarity": normalize_rarity(ing["rarity"]),
                         "combat": ing["combat"],
                         "utility": ing["utility"],
                         "whimsy": ing["whimsy"]
                     } for ing in combo
                 ]
             }
-            possible_recipes[potion_type][potion_name]["recipes"].append(recipe)
+            possible_recipes[potion_type].append(recipe)
 
-    # Sort each potion type's recipes by potion number
+    # Sort each potion type's recipes numerically by potion number
     for potion_list in possible_recipes.values():
-        sorted_potions = {k: v for k, v in sorted(potion_list.items(), key=lambda item: extract_number(item[0]))}
-        potion_list.clear()
-        potion_list.update(sorted_potions)
+        potion_list.sort(key=lambda x: extract_number(x['potion_type']))
 
-    # Return list of grouped recipes as JSON
+    # Return list of possible recipes as JSON
     return jsonify(possible_recipes)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

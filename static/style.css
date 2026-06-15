@@ -1,274 +1,195 @@
 body {
-	background: linear-gradient(0deg, #508ab9 0%, #65ade8 50%, #65ade8 100%);
-	background-attachment: fixed;
-	background-size: cover;
-	color:#57504d;
-	font-family:"rogliano",sans-serif;
-	margin:0;
-	padding:0
+    font-family: "rogliano", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #65ade8;
+    color: #2d2d2d;
 }
+
 .container {
-    background-image: url('background.jpg'); /* Replace with your image path */
-    background-repeat: repeat; /* Tiles the image */
-    background-size: auto; /* Allows the image to repeat at its original size */
-    background-color:#fffadb;
-	width: 80%;
-	max-width: 1100px;
-	margin: 60px auto;
-	padding: 30px;
-	border-radius:8px;
-	box-shadow:0 4px 12px #0000001a;
+    width: 80%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fffadb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 header {
-	text-align:center
+    text-align: center;
 }
-h1 { /* Main heading */
-	font-family:"sneakers-pro",sans-serif;
-	font-size:4em;
-	font-style:normal;
-	font-weight:500;
-	color:#DCA453;
-	line-height: .9em;
-	margin-bottom:30px;
-	text-wrap: balance;
-	white-space: normal
+
+h1 {
+    font-family: "sneakers-pro", sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: -10px;
+    color: #DCA453;
 }
-h2 { /* Subhead */
-	color:#57504d;
-    mix-blend-mode: multiply;
-	font-family:"rogliano",sans-serif;
-	font-size:1.3em;
-	font-style:normal;
-	font-weight:400;
-	line-height: 1.4em;
-	text-wrap: balance;
-	white-space:normal
+
+h2 {
+    font-family: "rogliano", sans-serif;
+    font-weight: 400;
+    font-style: normal;    
+    font-size: 20px;
+    margin-bottom: 50px;
+    color: #2d2d2d;
 }
-h3 { /* Column headers */
-	font-family:"rogliano",sans-serif;
-    mix-blend-mode: multiply;
-	color:#57504d;
-	border-bottom:2px solid #302D29;
-	font-size:1.2em;
-	font-weight:700;
-	margin-top: 10px;
-	margin-bottom:25px;
-	padding-bottom:3px;
-	text-align:center
+
+recipes-title {
+    font-family: "rogliano", sans-serif;
+    font-size: 18px;
+    color: #577da1;
+    font-weight: 700;    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px; /* Ensure some padding to improve visibility */
 }
-h4, .potion-header {
-	font-family:"rogliano",sans-serif;
-	font-size:1em;
-	font-weight:500;
-	margin-bottom:5px
+
+.recipes-title h2 {
+    font-family: "sneakers-pro", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #DCA453;
 }
-h5 {
-	color:#57504d;
-    mix-blend-mode: multiply;
-	font-size:1em;
-	font-weight:700;
-    margin-top:10px;
-	margin-bottom:0
+
+h3 {
+    font-family: "rogliano", sans-serif;
+    font-size: 18px;
+    color: #577da1;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid #577da1;
+    padding-bottom: 12px;
+    margin-bottom: 30px;
 }
+
 .form-section {
-	margin-bottom:30px
+    margin-bottom: 30px;
 }
+
 .ingredient-columns {
-	display:flex;
-	flex-wrap:wrap;
-	gap:10px;
-	justify-content:space-between
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
+
 .column {
-	flex:1 1 300px;
-	padding:10px
+    width: 32%;
+    padding: 10px;
 }
+
 .ingredient-button {
-	background-color:#f8f2ea;
-    mix-blend-mode: multiply;
-	border:none;
-	border-radius:4px;
-	color:#333;
-	cursor:pointer;
-	font-family:"rogliano",sans-serif;
-	font-size:1em;
-	font-style:normal;
-	font-weight:400;
-	text-align: left;
-	margin:-5px;
-	padding: 10px 14px;
-	transition:background-color .1s ease
+    font-family: "rogliano", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #ede1cd;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 14px;
+    margin: -5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.1s ease;
 }
+
 .ingredient-button.selected.common {
-	background-color:#fdfbfa;
-    border:3px solid #8aa466; 
-	padding: 7px 11px;    
-	color:#333
+    background-color: #c2e3a7; /* Common: light green */
+    color: #333;
 }
+
 .ingredient-button.selected.uncommon {
-	background-color:#fdfbfa;
-    border:3px solid #dba551; 
-	padding: 7px 11px; 
-    color:#333
+    background-color: #fde663; /* Uncommon: yellow */
+    color: #333;
 }
+
 .ingredient-button.selected.rare {
-	background-color:#fdfbfa;
-    border:3px solid #ad4639; 
-	padding: 7px 11px; 
-	color:#333
+    background-color: #fd8966; /* Rare: coral */
+    color: #333;
 }
+
 .button-group {
-	margin-top:30px;
-	margin-bottom:20px;
-	text-align:center
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
+
 .button-group button {
-	background-color:#198bdb;
-	border:none;
-	border-radius:4px;
-	color:#fff;
-	cursor:pointer;
-	font-family:"rogliano",sans-serif;
-	font-size:1em;
-	font-style:normal;
-	font-weight:400;
-	box-shadow:1px 1px 3px #0000001a;
-	margin:5px;
-	padding:10px 18px;
-	transition:background-color .1s ease,
+    background-color: #65ade8;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
+
 .button-group button:hover {
-	background-color:#007fd7;
-	box-shadow:0 2px 4px #0003
-
+    background-color: #005fa3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
 #results {
-	display:flex;
-	flex-wrap:wrap;
-	justify-content:space-between;
-	margin-top:40px
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
 }
+
 .recipe-column {
-	margin-bottom:20px;
-	width:32%
+    width: 32%;
 }
+
+
 #results h3 {
-	text-align:center;
-	margin-bottom: 12px
+    text-align: center;
 }
+
 #results ul {
-	list-style-type:none;
-	padding-left:0
-}
-#results li { /* Numbered recipes under potions */
-	background-color:#F6EDE2;
-    mix-blend-mode: multiply;
-    border:none;
-	border-radius:5px;
-	display:block;
-	font-size:1em;
-	margin:10px 0;
-	padding:10px 14px
-}
-.potion-header {
-	background-color:#89a466;
-	border-radius:4px;
-	color:#fff;
-	cursor:pointer;
-	display:inline-block;
-	font-size:1em;
-	font-weight:500;
-	margin:5px 0;
-	box-shadow:1px 1px 3px #0000001a;
-	padding:10px 14px;
-	transition:background-color .1s ease,box-shadow .1s ease
-}
-.potion-header:hover {
-	background-color:#6D8351;
-	box-shadow:0 2px 4px #0003
-}
-.recipe-details {
-	margin-top: 0;
-	padding-top: 0;
-}
-.toggle-arrow {
-	font-size:.6em;
-	margin-left:8px;
-	transition:transform .2s ease
-}
-.toggle-arrow.expanded {
-	transform:rotate(180deg)
-}
-.common {
-    background-color: #c2e3a7;
-    color: #333;
+    list-style-type: none;
+    padding-left: 0;
 }
 
-.uncommon {
-    background-color: #fde663;
-    color: #333;
+#results li {
+    background-color: #ede1cd;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.rare {
-    background-color: #fd8966;
-    color: #333;
+/* Ruleset toggle button */
+.ruleset-toggle {
+    text-align: center;
+    margin: 20px 0 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-	.container {
-		margin:20px auto;
-		padding:20px;
-		width:80%
+.ruleset-button {
+    background-color: #ede1cd;
+    color: #333;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
-	h1 {
-		margin-top: 10px;
-        margin-bottom: 20px
+
+.ruleset-button:hover {
+    background-color: #d8c6ad;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-	h2 {
-		font-size:1em;
-		margin-bottom:20px
-}
-	h3 { /* Column headers */
-		margin-top: -10px
-}
-	h5 {
-		font-size: 0.9em; /* Numbered recipes under potions */
-        margin-top: 12px
-}
-    .recipe-title { /* Results column headers */
-        margin-top: 12px
-    }
-	#results li {
-		font-size: 0.9em
-}
-	.potion-header { 
-		font-size: .9em
-}
-	.ingredient-button { /* Individual ingredients */
-		margin-bottom: -12px;
-		font-size: .9em
-}
-	.button-group button { /* "Find" and "Clear" buttons */
-		font-size: .9em
-}
-	.button-group {
-		margin-top:10px;
-		margin-bottom:20px
-}
-	.recipe-column {
-		margin-bottom:20px;
-		width:100%
-}
-	.ingredient-columns .column {
-		flex:1 1 100%
-}
-}
-@media (max-width: 480px) {
-	h1 {
-		font-size:12vw
-}
-	.toggle-arrow {
-		font-size:.5em
-}
+
+.ruleset-button.selected {
+    background-color: #65ade8;
+    color: #ffffff;
 }

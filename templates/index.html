@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obojima Potion Almanac</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +12,14 @@
     <div class="container">
         <header>
             <h1>Obojima Potion Almanac</h1>
-            <h2>Select Three or More Ingredients to Reveal Potion Recipes</h2>
+            <h2>Select Three or More Ingredients to Discover Potion Recipes</h2>
         </header>
 
         <!-- Button group at the top -->
         <div class="button-group">
             <button type="button" onclick="findRecipes()">Find Recipes</button>
             <button type="button" onclick="clearSelection()">Clear Selection</button>
+            <button type="button" id="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
         </div>
 
         <!-- Ingredient selection form -->
