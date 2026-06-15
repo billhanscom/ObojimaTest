@@ -5,7 +5,10 @@
         "utility": 5,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Apper Carrot",
@@ -13,7 +16,10 @@
         "utility": 3,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Gale Fields", "Gift of Shuritashi"]
+        "regions": [
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Bamboo",
@@ -21,8 +27,11 @@
         "utility": 3,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "Land of Hot Water"]
-
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Bashu Powder",
@@ -30,7 +39,10 @@
         "utility": 0,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Blue Back Salmon",
@@ -38,7 +50,15 @@
         "utility": 4,
         "whimsy": 7,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora",
+            "The Shallows"
+        ]
     },
     {
         "name": "Boom Beri",
@@ -46,7 +66,12 @@
         "utility": 6,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Coastal Highlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Bora Bug",
@@ -54,7 +79,13 @@
         "utility": 3,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Brush Reed",
@@ -62,7 +93,11 @@
         "utility": 10,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Land of Hot Water", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Land of Hot Water",
+            "The Shallows"
+        ]
     },
     {
         "name": "Bundle of Driko Twigs",
@@ -70,7 +105,14 @@
         "utility": 1,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Camp Mite",
@@ -78,7 +120,11 @@
         "utility": 4,
         "whimsy": 8,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gale Fields", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Chicken Egg",
@@ -86,7 +132,13 @@
         "utility": 1,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Chisuay's Heavenly Tea",
@@ -101,7 +153,12 @@
         "utility": 6,
         "whimsy": 5,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gale Fields", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Cloud Horn",
@@ -109,7 +166,10 @@
         "utility": 0,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Gale Fields", "Gift of Shuritashi"]
+        "regions": [
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Creeping Bolete",
@@ -117,7 +177,11 @@
         "utility": 10,
         "whimsy": 6,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Dorrin Plate",
@@ -125,7 +189,9 @@
         "utility": 8,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Dried Fruit",
@@ -133,7 +199,9 @@
         "utility": 1,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Earwax",
@@ -141,7 +209,14 @@
         "utility": 0,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Fish Folk Tooth",
@@ -149,7 +224,12 @@
         "utility": 4,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "Land of Hot Water", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "The Shallows"
+        ]
     },
     {
         "name": "Fish Head",
@@ -157,7 +237,15 @@
         "utility": 5,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora",
+            "The Shallows"
+        ]
     },
     {
         "name": "Flash Paper",
@@ -165,7 +253,11 @@
         "utility": 9,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Coastal Highlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Green Slime",
@@ -173,7 +265,12 @@
         "utility": 6,
         "whimsy": 7,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Gohaku Rice",
@@ -181,7 +278,10 @@
         "utility": 2,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Land of Hot Water"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Hakuma Sapwood",
@@ -189,7 +289,11 @@
         "utility": 1,
         "whimsy": 9,
         "rarity": "common",
-        "regions": ["Gale Fields", "Gift of Shuritashi", "Mount Arbora"]
+        "regions": [
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Hill Dragon Egg",
@@ -197,7 +301,9 @@
         "utility": 3,
         "whimsy": 8,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Howler Fur",
@@ -205,7 +311,11 @@
         "utility": 5,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gale Fields", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gale Fields",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Itchi Beri",
@@ -213,7 +323,9 @@
         "utility": 1,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Jack-o-Lantern Bits",
@@ -221,7 +333,11 @@
         "utility": 1,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Gale Fields", "Gift of Shuritashi"]
+        "regions": [
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Jumping Bonfire",
@@ -229,16 +345,22 @@
         "utility": 4,
         "whimsy": 10,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
-
     {
         "name": "Kloth Leech",
         "combat": 1,
         "utility": 1,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Knobble Leaf Seaweed",
@@ -246,7 +368,11 @@
         "utility": 1,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "The Shallows"
+        ]
     },
     {
         "name": "Kojo Root",
@@ -254,7 +380,9 @@
         "utility": 3,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Lovers Vine",
@@ -262,7 +390,10 @@
         "utility": 0,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Mandrake Root",
@@ -270,7 +401,9 @@
         "utility": 5,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Mellowort",
@@ -278,7 +411,10 @@
         "utility": 8,
         "whimsy": 7,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Monkey's Coil",
@@ -286,7 +422,9 @@
         "utility": 0,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Mountain Ox Dung",
@@ -294,7 +432,9 @@
         "utility": 3,
         "whimsy": 8,
         "rarity": "common",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Mouse Tree Nut",
@@ -302,7 +442,9 @@
         "utility": 6,
         "whimsy": 5,
         "rarity": "common",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Narutomaki",
@@ -310,7 +452,10 @@
         "utility": 0,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Nobblewort",
@@ -318,7 +463,11 @@
         "utility": 1,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Gale Fields", "Gift of Shuritashi", "Mount Arbora"]
+        "regions": [
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Oporion Glass",
@@ -326,7 +475,11 @@
         "utility": 10,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Land of Hot Water", "Mount Arbora", "The Shallows"]
+        "regions": [
+            "Land of Hot Water",
+            "Mount Arbora",
+            "The Shallows"
+        ]
     },
     {
         "name": "Origami Crane",
@@ -334,7 +487,9 @@
         "utility": 0,
         "whimsy": 10,
         "rarity": "common",
-        "regions": ["Land of Hot Water"]
+        "regions": [
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Pink Candle Wax",
@@ -342,7 +497,11 @@
         "utility": 2,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Coastal Highlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Peeping Willow",
@@ -350,7 +509,9 @@
         "utility": 0,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Poison",
@@ -358,7 +519,14 @@
         "utility": 8,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Pungent Sea Foam",
@@ -366,7 +534,9 @@
         "utility": 7,
         "whimsy": 5,
         "rarity": "common",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Pyramid Melon",
@@ -374,7 +544,9 @@
         "utility": 2,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Queen's Dilemma",
@@ -382,7 +554,11 @@
         "utility": 5,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Rake Paste",
@@ -390,7 +566,11 @@
         "utility": 10,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Rattle Shoot",
@@ -398,7 +578,9 @@
         "utility": 8,
         "whimsy": 7,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Ribbon Rot",
@@ -406,7 +588,9 @@
         "utility": 3,
         "whimsy": 9,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Rust Crab",
@@ -414,7 +598,9 @@
         "utility": 4,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Scalefruit Rind",
@@ -422,7 +608,10 @@
         "utility": 2,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Sea Water",
@@ -430,7 +619,12 @@
         "utility": 0,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "Land of Hot Water", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "The Shallows"
+        ]
     },
     {
         "name": "Seashell",
@@ -438,7 +632,12 @@
         "utility": 0,
         "whimsy": 1,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "Land of Hot Water", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "The Shallows"
+        ]
     },
     {
         "name": "Sheep Dragon Wool",
@@ -446,7 +645,9 @@
         "utility": 8,
         "whimsy": 7,
         "rarity": "common",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Snap Vine Sap",
@@ -454,7 +655,9 @@
         "utility": 2,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Spindle-Leg Spider Webs",
@@ -462,7 +665,11 @@
         "utility": 6,
         "whimsy": 7,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Gale Fields", "Gift of Shuritashi"]
+        "regions": [
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Spirit Root",
@@ -470,7 +677,9 @@
         "utility": 2,
         "whimsy": 3,
         "rarity": "common",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Squid Ink",
@@ -478,7 +687,9 @@
         "utility": 1,
         "whimsy": 9,
         "rarity": "common",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Tangle Weed",
@@ -486,7 +697,9 @@
         "utility": 3,
         "whimsy": 8,
         "rarity": "common",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Ube",
@@ -494,7 +707,9 @@
         "utility": 5,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Varrow",
@@ -502,7 +717,11 @@
         "utility": 1,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Venus Fly Rat",
@@ -510,7 +729,9 @@
         "utility": 2,
         "whimsy": 8,
         "rarity": "common",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Windbloom",
@@ -518,7 +739,11 @@
         "utility": 7,
         "whimsy": 0,
         "rarity": "common",
-        "regions": ["Gale Fields", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Witch's Broom",
@@ -526,7 +751,9 @@
         "utility": 0,
         "whimsy": 5,
         "rarity": "common",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Witch's Eye Coral",
@@ -534,7 +761,9 @@
         "utility": 0,
         "whimsy": 10,
         "rarity": "common",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Yugi Sap",
@@ -542,7 +771,11 @@
         "utility": 4,
         "whimsy": 2,
         "rarity": "common",
-        "regions": ["Gale Fields", "Gift of Shuritashi", "Mount Arbora"]
+        "regions": [
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Yuma Shrub",
@@ -550,7 +783,10 @@
         "utility": 8,
         "whimsy": 4,
         "rarity": "common",
-        "regions": ["Coastal Highlands", "Mount Arbora"]
+        "regions": [
+            "Coastal Highlands",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Black Pearl",
@@ -558,7 +794,9 @@
         "utility": 14,
         "whimsy": 15,
         "rarity": "uncommon",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Black Cinnamon",
@@ -566,7 +804,9 @@
         "utility": 12,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Bottle Cap (Supa-Fizz!)",
@@ -574,7 +814,15 @@
         "utility": 13,
         "whimsy": 16,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water", "Mount Arbora", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water",
+            "Mount Arbora",
+            "The Shallows"
+        ]
     },
     {
         "name": "Corrupted Seawater",
@@ -582,7 +830,9 @@
         "utility": 11,
         "whimsy": 14,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Corrupted Slime",
@@ -590,7 +840,9 @@
         "utility": 14,
         "whimsy": 13,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Cracking Jasper",
@@ -598,7 +850,9 @@
         "utility": 15,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Land of Hot Water"]
+        "regions": [
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Dawn Petal",
@@ -606,7 +860,10 @@
         "utility": 13,
         "whimsy": 17,
         "rarity": "uncommon",
-        "regions": ["Gift of Shuritashi", "Mount Arbora"]
+        "regions": [
+            "Gift of Shuritashi",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Dragon Root",
@@ -614,7 +871,9 @@
         "utility": 15,
         "whimsy": 16,
         "rarity": "uncommon",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Essence of Ill Omen",
@@ -629,7 +888,10 @@
         "utility": 11,
         "whimsy": 17,
         "rarity": "uncommon",
-        "regions": ["Coastal Highlands", "Mount Arbora"]
+        "regions": [
+            "Coastal Highlands",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Feather Rock",
@@ -637,7 +899,9 @@
         "utility": 17,
         "whimsy": 15,
         "rarity": "uncommon",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Fizzing Green",
@@ -645,7 +909,9 @@
         "utility": 14,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Gift of Shuritashi"]
+        "regions": [
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Forge Slag",
@@ -653,7 +919,9 @@
         "utility": 14,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Gargoyle Powder",
@@ -661,7 +929,10 @@
         "utility": 16,
         "whimsy": 13,
         "rarity": "uncommon",
-        "regions": ["Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Glow Worms of the Vale",
@@ -669,7 +940,9 @@
         "utility": 15,
         "whimsy": 14,
         "rarity": "uncommon",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Hakumon's Ramen Broth",
@@ -677,7 +950,9 @@
         "utility": 14,
         "whimsy": 17,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Happy Joy Cake",
@@ -685,7 +960,9 @@
         "utility": 13,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Gift of Shuritashi"]
+        "regions": [
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Kojobi Fruit",
@@ -693,7 +970,12 @@
         "utility": 14,
         "whimsy": 14,
         "rarity": "uncommon",
-        "regions": ["Coastal Highlands", "Gale Fields", "Gift of Shuritashi", "Land of Hot Water"]
+        "regions": [
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi",
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Laughing Moss",
@@ -701,7 +983,10 @@
         "utility": 16,
         "whimsy": 16,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Gift of Shuritashi"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Lions Blume",
@@ -709,7 +994,9 @@
         "utility": 13,
         "whimsy": 16,
         "rarity": "uncommon",
-        "regions": ["Coastal Highlands"]
+        "regions": [
+            "Coastal Highlands"
+        ]
     },
     {
         "name": "Living Spud",
@@ -717,7 +1004,9 @@
         "utility": 12,
         "whimsy": 17,
         "rarity": "uncommon",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Magic Monk's Rice Wine",
@@ -732,7 +1021,9 @@
         "utility": 12,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Land of Hot Water"]
+        "regions": [
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Mountain Snail",
@@ -740,7 +1031,9 @@
         "utility": 15,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Mournshade",
@@ -748,7 +1041,9 @@
         "utility": 15,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Munchanka Root",
@@ -756,7 +1051,9 @@
         "utility": 11,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Gift of Shuritashi"]
+        "regions": [
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Nakudama Spice",
@@ -764,7 +1061,10 @@
         "utility": 15,
         "whimsy": 14,
         "rarity": "uncommon",
-        "regions": ["Coastal Highlands", "Gift of Shuritashi"]
+        "regions": [
+            "Coastal Highlands",
+            "Gift of Shuritashi"
+        ]
     },
     {
         "name": "Night Thistle",
@@ -772,7 +1072,9 @@
         "utility": 17,
         "whimsy": 16,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Noodle Eel",
@@ -780,7 +1082,12 @@
         "utility": 12,
         "whimsy": 16,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "The Shallows"
+        ]
     },
     {
         "name": "Opu Opu Spring Water",
@@ -788,7 +1095,9 @@
         "utility": 16,
         "whimsy": 14,
         "rarity": "uncommon",
-        "regions": ["Mount Arbora"]
+        "regions": [
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Petrified Alligator",
@@ -796,7 +1105,14 @@
         "utility": 16,
         "whimsy": 13,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Land of Hot Water", "Mount Arbora", "The Shallows"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora",
+            "The Shallows"
+        ]
     },
     {
         "name": "Pok Pok Flakes",
@@ -804,7 +1120,9 @@
         "utility": 14,
         "whimsy": 13,
         "rarity": "uncommon",
-        "regions": ["The Shallows"]
+        "regions": [
+            "The Shallows"
+        ]
     },
     {
         "name": "Rubble Golem's Rubble",
@@ -819,7 +1137,9 @@
         "utility": 12,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Shadowroot",
@@ -827,7 +1147,9 @@
         "utility": 13,
         "whimsy": 12,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands"]
+        "regions": [
+            "Brackwater Wetlands"
+        ]
     },
     {
         "name": "Sleeping Merchant",
@@ -835,7 +1157,13 @@
         "utility": 13,
         "whimsy": 13,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Spark Plug",
@@ -843,7 +1171,13 @@
         "utility": 17,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Spirit Tea",
@@ -851,7 +1185,9 @@
         "utility": 11,
         "whimsy": 17,
         "rarity": "uncommon",
-        "regions": ["Land of Hot Water"]
+        "regions": [
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Spring",
@@ -859,7 +1195,13 @@
         "utility": 17,
         "whimsy": 15,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Sun Shroom",
@@ -867,7 +1209,9 @@
         "utility": 16,
         "whimsy": 14,
         "rarity": "uncommon",
-        "regions": ["Gale Fields"]
+        "regions": [
+            "Gale Fields"
+        ]
     },
     {
         "name": "Toka Truffle",
@@ -882,7 +1226,13 @@
         "utility": 15,
         "whimsy": 15,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Coastal Highlands", "Gale Fields", "Land of Hot Water", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Coastal Highlands",
+            "Gale Fields",
+            "Land of Hot Water",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Wolfenite",
@@ -890,7 +1240,11 @@
         "utility": 17,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Brackwater Wetlands", "Gale Fields", "Mount Arbora"]
+        "regions": [
+            "Brackwater Wetlands",
+            "Gale Fields",
+            "Mount Arbora"
+        ]
     },
     {
         "name": "Wychwood",
@@ -905,7 +1259,9 @@
         "utility": 11,
         "whimsy": 11,
         "rarity": "uncommon",
-        "regions": ["Land of Hot Water"]
+        "regions": [
+            "Land of Hot Water"
+        ]
     },
     {
         "name": "Blossom of Spirit Vine",

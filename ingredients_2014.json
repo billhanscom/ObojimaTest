@@ -141,6 +141,13 @@
         ]
     },
     {
+        "name": "Chisuay's Heavenly Tea",
+        "combat": 2,
+        "utility": 7,
+        "whimsy": 5,
+        "rarity": "common"
+    },
+    {
         "name": "Clay Snake Tail",
         "combat": 8,
         "utility": 6,
@@ -266,13 +273,6 @@
         ]
     },
     {
-        "name": "Chisuay's Heavenly Tea",
-        "combat": 2,
-        "utility": 7,
-        "whimsy": 5,
-        "rarity": "common"
-    },
-    {
         "name": "Gohaku Rice",
         "combat": 3,
         "utility": 2,
@@ -328,6 +328,18 @@
         ]
     },
     {
+        "name": "Jack-o-Lantern Bits",
+        "combat": 2,
+        "utility": 1,
+        "whimsy": 3,
+        "rarity": "common",
+        "regions": [
+            "Coastal Highlands",
+            "Gale Fields",
+            "Gift of Shuritashi"
+        ]
+    },
+    {
         "name": "Jumping Bonfire",
         "combat": 6,
         "utility": 4,
@@ -338,18 +350,6 @@
             "Gale Fields",
             "Gift of Shuritashi",
             "Land of Hot Water"
-        ]
-    },
-    {
-        "name": "Jack-o-Lantern Bits",
-        "combat": 2,
-        "utility": 1,
-        "whimsy": 3,
-        "rarity": "common",
-        "regions": [
-            "Coastal Highlands",
-            "Gale Fields",
-            "Gift of Shuritashi"
         ]
     },
     {
@@ -614,10 +614,10 @@
         ]
     },
     {
-        "name": "Seashell",
-        "combat": 0,
+        "name": "Sea Water",
+        "combat": 1,
         "utility": 0,
-        "whimsy": 1,
+        "whimsy": 0,
         "rarity": "common",
         "regions": [
             "Brackwater Wetlands",
@@ -627,10 +627,10 @@
         ]
     },
     {
-        "name": "Seawater",
-        "combat": 1,
+        "name": "Seashell",
+        "combat": 0,
         "utility": 0,
-        "whimsy": 0,
+        "whimsy": 1,
         "rarity": "common",
         "regions": [
             "Brackwater Wetlands",
@@ -650,7 +650,17 @@
         ]
     },
     {
-        "name": "Spindle Leg Spider Webs",
+        "name": "Snap Vine Sap",
+        "combat": 0,
+        "utility": 2,
+        "whimsy": 0,
+        "rarity": "common",
+        "regions": [
+            "Coastal Highlands"
+        ]
+    },
+    {
+        "name": "Spindle-Leg Spider Webs",
         "combat": 5,
         "utility": 9,
         "whimsy": 6,
@@ -659,16 +669,6 @@
             "Coastal Highlands",
             "Gale Fields",
             "Gift of Shuritashi"
-        ]
-    },
-    {
-        "name": "Snap Vine Sap",
-        "combat": 0,
-        "utility": 2,
-        "whimsy": 0,
-        "rarity": "common",
-        "regions": [
-            "Coastal Highlands"
         ]
     },
     {
@@ -825,16 +825,6 @@
         ]
     },
     {
-        "name": "Cracking Jasper",
-        "combat": 17,
-        "utility": 15,
-        "whimsy": 12,
-        "rarity": "uncommon",
-        "regions": [
-            "Land of Hot Water"
-        ]
-    },
-    {
         "name": "Corrupted Seawater",
         "combat": 17,
         "utility": 11,
@@ -855,13 +845,13 @@
         ]
     },
     {
-        "name": "Hakumon's Ramen Broth",
-        "combat": 12,
-        "utility": 14,
-        "whimsy": 17,
+        "name": "Cracking Jasper",
+        "combat": 17,
+        "utility": 15,
+        "whimsy": 12,
         "rarity": "uncommon",
         "regions": [
-            "Brackwater Wetlands"
+            "Land of Hot Water"
         ]
     },
     {
@@ -955,6 +945,16 @@
         ]
     },
     {
+        "name": "Hakumon's Ramen Broth",
+        "combat": 12,
+        "utility": 14,
+        "whimsy": 17,
+        "rarity": "uncommon",
+        "regions": [
+            "Brackwater Wetlands"
+        ]
+    },
+    {
         "name": "Happy Joy Cake",
         "combat": 12,
         "utility": 13,
@@ -989,16 +989,6 @@
         ]
     },
     {
-        "name": "Living Spud",
-        "combat": 14,
-        "utility": 12,
-        "whimsy": 17,
-        "rarity": "uncommon",
-        "regions": [
-            "Gale Fields"
-        ]
-    },
-    {
         "name": "Lions Blume",
         "combat": 17,
         "utility": 13,
@@ -1006,6 +996,16 @@
         "rarity": "uncommon",
         "regions": [
             "Coastal Highlands"
+        ]
+    },
+    {
+        "name": "Living Spud",
+        "combat": 14,
+        "utility": 12,
+        "whimsy": 17,
+        "rarity": "uncommon",
+        "regions": [
+            "Gale Fields"
         ]
     },
     {
@@ -1100,16 +1100,6 @@
         ]
     },
     {
-        "name": "Pok Pok Flakes",
-        "combat": 13,
-        "utility": 14,
-        "whimsy": 13,
-        "rarity": "uncommon",
-        "regions": [
-            "The Shallows"
-        ]
-    },
-    {
         "name": "Petrified Alligator",
         "combat": 15,
         "utility": 16,
@@ -1125,27 +1115,37 @@
         ]
     },
     {
-        "name": "Rubble from a Rubble Golem",
+        "name": "Pok Pok Flakes",
+        "combat": 13,
+        "utility": 14,
+        "whimsy": 13,
+        "rarity": "uncommon",
+        "regions": [
+            "The Shallows"
+        ]
+    },
+    {
+        "name": "Rubble Golem's Rubble",
         "combat": 16,
         "utility": 11,
         "whimsy": 15,
         "rarity": "uncommon"
     },
     {
-        "name": "Shadowroot",
-        "combat": 15,
-        "utility": 13,
-        "whimsy": 12,
+        "name": "Scumweed",
+        "combat": 11,
+        "utility": 12,
+        "whimsy": 11,
         "rarity": "uncommon",
         "regions": [
             "Brackwater Wetlands"
         ]
     },
     {
-        "name": "Scumweed",
-        "combat": 11,
-        "utility": 12,
-        "whimsy": 11,
+        "name": "Shadowroot",
+        "combat": 15,
+        "utility": 13,
+        "whimsy": 12,
         "rarity": "uncommon",
         "regions": [
             "Brackwater Wetlands"
