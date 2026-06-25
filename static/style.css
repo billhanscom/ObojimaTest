@@ -193,3 +193,13 @@ h3 {
     background-color: #65ade8;
     color: #ffffff;
 }
+
+
+.recipe-summary {
+    width:100%;
+    text-align:center;
+    font-family:"sneakers-pro",sans-serif;
+    font-size:28px;
+    color:#DCA453;
+    margin-bottom:30px;
+}

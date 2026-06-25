@@ -97,6 +97,26 @@ async function findRecipes() {
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '';
 
+    
+    // Add summary above the recipe columns
+    let recipeCount = 0;
+    let potionNames = new Set();
+
+    ["Combat", "Utility", "Whimsy"].forEach(type => {
+        if (recipes[type]) {
+            recipeCount += recipes[type].length;
+            recipes[type].forEach(r => potionNames.add(r.potion_type));
+        }
+    });
+
+    const summary = document.createElement("div");
+    summary.className = "recipe-summary";
+    summary.textContent =
+        `${recipeCount.toLocaleString()} Recipes Found for ${potionNames.size.toLocaleString()} Unique Potions`;
+
+    resultsDiv.appendChild(summary);
+
+
     const columnHeaders = {
         "Combat": "Combat Potions",
         "Utility": "Utility Potions",
