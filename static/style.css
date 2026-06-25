@@ -137,6 +137,7 @@ h3 {
 
 #results {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 40px;
 }
@@ -214,4 +215,18 @@ h3 {
 
 .site-footer a:hover {
     text-decoration: underline;
+}
+
+
+.recipe-summary {
+    width: 100%;
+    flex-basis: 100%;
+    text-align: center;
+    font-family: "rogliano", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #577da1;
+    margin: 0 0 30px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #577da1;
 }
