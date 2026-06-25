@@ -198,6 +198,7 @@ h3 {
 
 .recipe-summary {
     width: 100%;
+    display: block;
     text-align: center;
     font-family: "sneakers-pro", sans-serif;
     font-size: 24px;
