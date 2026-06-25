@@ -137,7 +137,6 @@ h3 {
 
 #results {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 40px;
 }
@@ -196,13 +195,23 @@ h3 {
 }
 
 
-.recipe-summary {
-    width: 100%;
-    display: block;
+.site-footer {
+    margin-top: 50px;
     text-align: center;
-    font-family: "sneakers-pro", sans-serif;
-    font-size: 24px;
-    color: #DCA453;
-    margin: 0 0 30px 0;
-    line-height: 1.2;
+    font-size: 11px;
+    color: #777;
+    line-height: 1.4;
+}
+
+.site-footer p {
+    margin: 2px 0;
+}
+
+.site-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
 }
