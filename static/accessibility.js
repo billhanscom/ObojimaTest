@@ -24,3 +24,16 @@
         });
     });
 })();
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+ document.querySelectorAll('#results,#completer-results').forEach(r=>{r.setAttribute('aria-live','polite');});
+ document.querySelectorAll('.ingredient-button').forEach(b=>{
+   const rarity=b.dataset.rarity||'ingredient';
+   b.setAttribute('aria-label',`Select ingredient: ${b.dataset.ingredient}. ${rarity} ingredient.`);
+ });
+ document.querySelectorAll('select').forEach(s=>{
+   if(!s.id)return;
+   s.setAttribute('aria-label', s.previousElementSibling? s.previousElementSibling.textContent.trim():s.id);
+ });
+});
