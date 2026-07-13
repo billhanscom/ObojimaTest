@@ -17,6 +17,7 @@
 
         <!-- Button group at the top -->
         <div class="button-group">
+            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" title="Toggle high contrast">◑</button>
             <button type="button" onclick="findRecipes()">Find Recipes</button>
             <button type="button" onclick="clearSelection()">Clear Selection</button>
             <button type="button" id="values-toggle-button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
@@ -78,6 +79,7 @@
         
     </div>
 
+    <script src="{{ url_for('static', filename='accessibility.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

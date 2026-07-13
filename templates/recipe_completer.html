@@ -16,6 +16,7 @@
         </header>
 
         <div class="button-group">
+            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" title="Toggle high contrast">◑</button>
             <a class="nav-button" href="{{ url_for('index') }}">Potion Almanac</a>
             <button type="button" class="values-toggle-button" onclick="toggleCompleterValuesYear()">Use 2014 Values</button>
         </div>
@@ -99,6 +100,7 @@
     <script>
         window.POTION_NAMES = {{ potion_names_json | safe }};
     </script>
+    <script src="{{ url_for('static', filename='accessibility.js') }}"></script>
     <script src="{{ url_for('static', filename='recipe_completer.js') }}"></script>
 </body>
 </html>

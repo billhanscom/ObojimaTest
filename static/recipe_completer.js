@@ -181,7 +181,7 @@ function renderCompleterResults(data) {
 
             card.innerHTML = `
                 <h4>Current Inventory Recipe</h4>
-                <p class="completion-meta"><strong>${recipe.attribute_totals}</strong></p>
+                <p class="completion-meta"><strong>Recipe Total ${recipe.attribute_totals}</strong></p>
                 <ul class="completion-recipe-list">${ingredientsList}</ul>
             `;
 
@@ -235,7 +235,7 @@ function renderCompleterResults(data) {
         card.innerHTML = `
             <div class="completion-card-header">
                 <h4>Add: <span class="ingredient ${rarityClass}">${formatCompleterIngredient(ingredient)}</span></h4>
-                <p class="completion-meta"><strong>${result.attribute_totals}</strong></p>
+                <p class="completion-meta"><strong>Recipe Total ${result.attribute_totals}</strong></p>
             </div>
             <ul class="completion-recipe-list">${ownedList}<li class="ingredient ${rarityClass}">${formatCompleterIngredient(ingredient)}</li></ul>
             <p class="completion-region-footer">${cardDesignation}</p>

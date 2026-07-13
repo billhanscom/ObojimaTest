@@ -108,7 +108,7 @@ h3 {
 
 .ingredient-button.selected.rare {
     background-color: #fd8966; /* Rare: coral */
-    color: #333;
+    color: #fff;
 }
 
 .button-group {
@@ -335,6 +335,7 @@ h3 {
 
 .completion-card .ingredient.rare {
     background-color: #fd8966;
+    color: #fff;
 }
 
 @media (max-width: 800px) {
@@ -438,6 +439,7 @@ h3 {
 #results li.ingredient.rare,
 .completion-card .ingredient.rare {
     background-color: #fd8966;
+    color: #fff;
 }
 
 /* Three-column Recipe Finder/Ingredient Finder results */
@@ -533,25 +535,25 @@ h3 {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.14);
 }
 
-/* High-contrast ingredient colors for result cards */
+/* Original ingredient result colors */
 #results li.ingredient.common,
 .completion-card .ingredient.common,
 #completer-results .completion-card .ingredient.common {
-    background-color: #2f6f22;
-    color: #ffffff;
+    background-color: #c2e3a7;
+    color: #333;
 }
 
 #results li.ingredient.uncommon,
 .completion-card .ingredient.uncommon,
 #completer-results .completion-card .ingredient.uncommon {
-    background-color: #ffe45c;
-    color: #1f1f1f;
+    background-color: #fde663;
+    color: #333;
 }
 
 #results li.ingredient.rare,
 .completion-card .ingredient.rare,
 #completer-results .completion-card .ingredient.rare {
-    background-color: #a8321f;
+    background-color: #fd8966;
     color: #ffffff;
 }
 
@@ -564,4 +566,95 @@ h3 {
     .recipe-column {
         width: 100%;
     }
+}
+
+
+/* High-contrast mode */
+.contrast-toggle-button {
+    min-width: 42px;
+    font-size: 18px;
+    line-height: 1;
+    padding: 9px 12px;
+}
+
+body.high-contrast {
+    background-color: #111111;
+    color: #111111;
+}
+
+body.high-contrast .container {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px #000000;
+}
+
+body.high-contrast h1 {
+    color: #8a4b00;
+}
+
+body.high-contrast h2,
+body.high-contrast .completer-intro,
+body.high-contrast .completer-empty {
+    color: #111111;
+}
+
+body.high-contrast h3,
+body.high-contrast .completion-card h4,
+body.high-contrast .recipe-card h4,
+body.high-contrast .completion-region-footer,
+body.high-contrast .completer-tally {
+    color: #003f73;
+    border-color: #003f73;
+}
+
+body.high-contrast .button-group button,
+body.high-contrast .nav-button,
+body.high-contrast .ruleset-button.selected {
+    background-color: #003f73;
+    color: #ffffff;
+}
+
+body.high-contrast .nav-button {
+    background-color: #7a4300;
+}
+
+body.high-contrast .button-group button:hover,
+body.high-contrast .nav-button:hover {
+    background-color: #000000;
+}
+
+body.high-contrast .ingredient-button,
+body.high-contrast .control-group select,
+body.high-contrast .recipe-card,
+body.high-contrast .completion-card,
+body.high-contrast #results li {
+    border: 2px solid #111111;
+    box-shadow: none;
+}
+
+body.high-contrast .ingredient-button.selected.common,
+body.high-contrast #results li.ingredient.common,
+body.high-contrast .completion-card .ingredient.common,
+body.high-contrast #completer-results .completion-card .ingredient.common {
+    background-color: #2f6f22;
+    color: #ffffff;
+}
+
+body.high-contrast .ingredient-button.selected.uncommon,
+body.high-contrast #results li.ingredient.uncommon,
+body.high-contrast .completion-card .ingredient.uncommon,
+body.high-contrast #completer-results .completion-card .ingredient.uncommon {
+    background-color: #ffe45c;
+    color: #111111;
+}
+
+body.high-contrast .ingredient-button.selected.rare,
+body.high-contrast #results li.ingredient.rare,
+body.high-contrast .completion-card .ingredient.rare,
+body.high-contrast #completer-results .completion-card .ingredient.rare {
+    background-color: #a8321f;
+    color: #ffffff;
+}
+
+body.high-contrast .completion-region-footer {
+    border-top-color: #003f73;
 }
