@@ -176,7 +176,7 @@ def ingredient_distance_label(ingredient, current_region):
     regions = ingredient.get("regions", [])
 
     if rarity == "rare":
-        return 0, "Rare ingredient — available anywhere", []
+        return 0, "Rare ingredient (available anywhere)", []
 
     if current_region in regions:
         return 0, "Local", [current_region]
@@ -218,6 +218,43 @@ def complete_recipe():
     ingredient_data = get_ingredient_data(dataset)
     selected_ingredients = [ing for ing in ingredient_data if ing['name'] in user_ingredients]
     selected_names = {ing['name'] for ing in selected_ingredients}
+
+    complete_inventory_results = []
+    for owned_combo in combinations(selected_ingredients, 3):
+        total_combat = sum(ing['combat'] for ing in owned_combo)
+        total_utility = sum(ing['utility'] for ing in owned_combo)
+        total_whimsy = sum(ing['whimsy'] for ing in owned_combo)
+
+        recipe_types = []
+        if total_combat > 0 and total_combat >= total_utility and total_combat >= total_whimsy:
+            recipe_types.append(("Combat", total_combat))
+        if total_utility > 0 and total_utility >= total_combat and total_utility >= total_whimsy:
+            recipe_types.append(("Utility", total_utility))
+        if total_whimsy > 0 and total_whimsy >= total_combat and total_whimsy >= total_utility:
+            recipe_types.append(("Whimsy", total_whimsy))
+
+        if (target_type, target_value) in recipe_types:
+            complete_inventory_results.append({
+                "owned_ingredients": [
+                    {
+                        "name": ing["name"],
+                        "rarity": normalize_rarity(ing["rarity"]),
+                        "combat": ing["combat"],
+                        "utility": ing["utility"],
+                        "whimsy": ing["whimsy"]
+                    } for ing in owned_combo
+                ],
+                "attribute_totals": f"[{total_combat}-{total_utility}-{total_whimsy}]"
+            })
+
+    if complete_inventory_results:
+        return jsonify({
+            "target_potion": get_potion_display_name(target_type, target_value),
+            "already_complete": True,
+            "complete_recipes": complete_inventory_results,
+            "results": [],
+            "message": "Potion can be brewed using current inventory—no additional ingredients needed."
+        })
 
     possible_results = []
 

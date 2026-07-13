@@ -128,6 +128,34 @@ function renderCompleterResults(data) {
     title.textContent = data.target_potion;
     resultsDiv.appendChild(title);
 
+    if (data.already_complete && data.complete_recipes && data.complete_recipes.length > 0) {
+        const message = document.createElement("p");
+        message.className = "completer-empty";
+        message.textContent = data.message || "Potion can be brewed using current inventory—no additional ingredients needed.";
+        resultsDiv.appendChild(message);
+
+        data.complete_recipes.forEach(recipe => {
+            const card = document.createElement("div");
+            card.className = "completion-card";
+
+            const ingredientsList = recipe.owned_ingredients.map(ing => {
+                const rarityClass = ing.rarity.toLowerCase();
+                return `<li class="ingredient ${rarityClass}">${ing.name} [${ing.combat}-${ing.utility}-${ing.whimsy}]</li>`;
+            }).join("");
+
+            card.innerHTML = `
+                <h4>Current Inventory Recipe</h4>
+                <p><strong>Completed Recipe:</strong> ${recipe.attribute_totals}</p>
+                <ul>${ingredientsList}</ul>
+            `;
+
+            resultsDiv.appendChild(card);
+        });
+
+        resultsDiv.scrollIntoView({behavior: "smooth"});
+        return;
+    }
+
     if (!data.results || data.results.length === 0) {
         const message = document.createElement("p");
         message.className = "completer-empty";
@@ -150,7 +178,10 @@ function renderCompleterResults(data) {
         const rarityClass = ingredient.rarity.toLowerCase();
         const regionsText = result.availability_regions.length > 0
             ? result.availability_regions.join(", ")
-            : "Available anywhere";
+            : "";
+        const availabilityText = regionsText
+            ? `${result.distance_label} — ${regionsText}`
+            : result.distance_label;
 
         const ownedList = result.owned_ingredients.map(ing => {
             const ownedRarityClass = ing.rarity.toLowerCase();
@@ -159,7 +190,7 @@ function renderCompleterResults(data) {
 
         card.innerHTML = `
             <h4>Add: <span class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</span></h4>
-            <p><strong>Availability:</strong> ${result.distance_label} — ${regionsText}</p>
+            <p><strong>Availability:</strong> ${availabilityText}</p>
             <p><strong>Completed Recipe:</strong> ${result.attribute_totals}</p>
             <ul>${ownedList}<li class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</li></ul>
         `;
