@@ -69,7 +69,8 @@ async function loadIngredientButtonsForCurrentYear() {
 
         button.setAttribute("data-rarity", ingredient.rarity);
         button.setAttribute("data-ingredient", ingredient.name);
-        button.innerHTML = `${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
+        const sourceMarker = ingredient.source === "Obojima: Tales from Yatamon" ? "*" : "";
+        button.innerHTML = `${ingredient.name}${sourceMarker} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
     });
 }
 

@@ -353,3 +353,9 @@ h3 {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
+.ingredient-source-note {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    text-align: center;
+}

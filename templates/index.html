@@ -31,7 +31,7 @@
                     <h3>Common Ingredients</h3>
                     {% for ingredient in common_ingredients %}
                         <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="common">
-                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                            {{ ingredient['name'] }}{% if ingredient.get('source') == 'Obojima: Tales from Yatamon' %}*{% endif %} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
                         </button><br><br>
                     {% endfor %}
                 </div>
@@ -41,7 +41,7 @@
                     <h3>Uncommon Ingredients</h3>
                     {% for ingredient in uncommon_ingredients %}
                         <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="uncommon">
-                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                            {{ ingredient['name'] }}{% if ingredient.get('source') == 'Obojima: Tales from Yatamon' %}*{% endif %} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
                         </button><br><br>
                     {% endfor %}
                 </div>
@@ -51,7 +51,7 @@
                     <h3>Rare Ingredients</h3>
                     {% for ingredient in rare_ingredients %}
                         <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="rare">
-                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                            {{ ingredient['name'] }}{% if ingredient.get('source') == 'Obojima: Tales from Yatamon' %}*{% endif %} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
                         </button><br><br>
                     {% endfor %}
                 </div>
@@ -69,7 +69,9 @@
             <!-- Results will be displayed in this section -->
         </div>
         
-         <footer class="site-footer">
+         <p class="ingredient-source-note">* Ingredient from <cite>Obojima: Tales from Yatamon</cite>.</p>
+
+        <footer class="site-footer">
             <p>Created by Urameshiya</p>
             <p><a href="https://discord.gg/ZfdtQeAqV" target="_blank" rel="noopener noreferrer">Report any errors on the Obojima Discord server.</a></p>
         </footer>

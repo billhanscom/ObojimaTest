@@ -127,6 +127,17 @@
         ]
     },
     {
+        "name": "Canned Cat",
+        "combat": 1,
+        "utility": 8,
+        "whimsy": 9,
+        "rarity": "common",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
+    },
+    {
         "name": "Chicken Egg",
         "combat": 1,
         "utility": 1,
@@ -260,6 +271,17 @@
         ]
     },
     {
+        "name": "Gohaku Rice",
+        "combat": 3,
+        "utility": 2,
+        "whimsy": 3,
+        "rarity": "common",
+        "regions": [
+            "Brackwater Wetlands",
+            "Land of Hot Water"
+        ]
+    },
+    {
         "name": "Green Slime",
         "combat": 8,
         "utility": 6,
@@ -273,15 +295,15 @@
         ]
     },
     {
-        "name": "Gohaku Rice",
-        "combat": 3,
+        "name": "Hair from a Yanari",
+        "combat": 5,
         "utility": 2,
-        "whimsy": 3,
+        "whimsy": 8,
         "rarity": "common",
         "regions": [
-            "Brackwater Wetlands",
-            "Land of Hot Water"
-        ]
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
     },
     {
         "name": "Hakuma Sapwood",
@@ -492,6 +514,16 @@
         ]
     },
     {
+        "name": "Peeping Willow",
+        "combat": 0,
+        "utility": 0,
+        "whimsy": 1,
+        "rarity": "common",
+        "regions": [
+            "Mount Arbora"
+        ]
+    },
+    {
         "name": "Pink Candle Wax",
         "combat": 2,
         "utility": 2,
@@ -501,16 +533,6 @@
             "Coastal Highlands",
             "Gift of Shuritashi",
             "Land of Hot Water"
-        ]
-    },
-    {
-        "name": "Peeping Willow",
-        "combat": 0,
-        "utility": 0,
-        "whimsy": 1,
-        "rarity": "common",
-        "regions": [
-            "Mount Arbora"
         ]
     },
     {
@@ -648,6 +670,17 @@
         "regions": [
             "Coastal Highlands"
         ]
+    },
+    {
+        "name": "Slice of Melon Bird",
+        "combat": 2,
+        "utility": 9,
+        "whimsy": 3,
+        "rarity": "common",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
     },
     {
         "name": "Snap Vine Sap",
@@ -789,16 +822,6 @@
         ]
     },
     {
-        "name": "Black Pearl",
-        "combat": 13,
-        "utility": 14,
-        "whimsy": 15,
-        "rarity": "uncommon",
-        "regions": [
-            "The Shallows"
-        ]
-    },
-    {
         "name": "Black Cinnamon",
         "combat": 16,
         "utility": 12,
@@ -806,6 +829,16 @@
         "rarity": "uncommon",
         "regions": [
             "Mount Arbora"
+        ]
+    },
+    {
+        "name": "Black Pearl",
+        "combat": 13,
+        "utility": 14,
+        "whimsy": 15,
+        "rarity": "uncommon",
+        "regions": [
+            "The Shallows"
         ]
     },
     {
@@ -876,11 +909,15 @@
         ]
     },
     {
-        "name": "Essence of Ill Omen",
-        "combat": 16,
+        "name": "Dried Pilot Leech",
+        "combat": 15,
         "utility": 12,
-        "whimsy": 11,
-        "rarity": "uncommon"
+        "whimsy": 17,
+        "rarity": "uncommon",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
     },
     {
         "name": "Essence of Glumbug",
@@ -892,6 +929,13 @@
             "Coastal Highlands",
             "Mount Arbora"
         ]
+    },
+    {
+        "name": "Essence of Ill Omen",
+        "combat": 16,
+        "utility": 12,
+        "whimsy": 11,
+        "rarity": "uncommon"
     },
     {
         "name": "Feather Rock",
@@ -1214,6 +1258,17 @@
         ]
     },
     {
+        "name": "Tamh Gon's Confetti",
+        "combat": 0,
+        "utility": 0,
+        "whimsy": 17,
+        "rarity": "uncommon",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
+    },
+    {
         "name": "Toka Truffle",
         "combat": 15,
         "utility": 12,
@@ -1409,60 +1464,5 @@
         "utility": 19,
         "whimsy": 19,
         "rarity": "rare"
-    },
-    {
-        "name": "Canned Cat",
-        "combat": 1,
-        "utility": 8,
-        "whimsy": 9,
-        "rarity": "common",
-        "regions": [
-            "Gift of Shuritashi"
-        ],
-        "source": "Obojima: Tales from Yatamon"
-    },
-    {
-        "name": "Slice of Melon Bird",
-        "combat": 2,
-        "utility": 9,
-        "whimsy": 3,
-        "rarity": "common",
-        "regions": [
-            "Gift of Shuritashi"
-        ],
-        "source": "Obojima: Tales from Yatamon"
-    },
-    {
-        "name": "Hair from a Yanari",
-        "combat": 5,
-        "utility": 2,
-        "whimsy": 8,
-        "rarity": "common",
-        "regions": [
-            "Gift of Shuritashi"
-        ],
-        "source": "Obojima: Tales from Yatamon"
-    },
-    {
-        "name": "Dried Pilot Leech",
-        "combat": 15,
-        "utility": 12,
-        "whimsy": 17,
-        "rarity": "uncommon",
-        "regions": [
-            "Gift of Shuritashi"
-        ],
-        "source": "Obojima: Tales from Yatamon"
-    },
-    {
-        "name": "Tamh Gon's Confetti",
-        "combat": 0,
-        "utility": 0,
-        "whimsy": 17,
-        "rarity": "uncommon",
-        "regions": [
-            "Gift of Shuritashi"
-        ],
-        "source": "Obojima: Tales from Yatamon"
     }
 ]

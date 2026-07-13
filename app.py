@@ -50,13 +50,26 @@ def extract_number(potion_name):
 
 
 def get_ingredient_data(dataset):
-    return DATASETS[normalize_dataset(dataset)]
+    return sorted(DATASETS[normalize_dataset(dataset)], key=ingredient_sort_key)
+
+
+def ingredient_sort_key(ingredient):
+    return str(ingredient.get('name', '')).casefold()
 
 
 def split_ingredients_by_rarity(ingredient_data):
-    common_ingredients = [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'common']
-    uncommon_ingredients = [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'uncommon']
-    rare_ingredients = [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'rare']
+    common_ingredients = sorted(
+        [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'common'],
+        key=ingredient_sort_key
+    )
+    uncommon_ingredients = sorted(
+        [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'uncommon'],
+        key=ingredient_sort_key
+    )
+    rare_ingredients = sorted(
+        [ing for ing in ingredient_data if normalize_rarity(ing.get('rarity')) == 'rare'],
+        key=ingredient_sort_key
+    )
     return common_ingredients, uncommon_ingredients, rare_ingredients
 
 
