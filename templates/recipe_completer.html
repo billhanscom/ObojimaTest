@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obojima Recipe Completer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/rke0sfx.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Obojima Recipe Completer</h1>
+            <h2>Select Your Inventory, Location, and Desired Potion</h2>
+        </header>
+
+        <div class="button-group">
+            <a class="nav-button" href="{{ url_for('index') }}">Potion Almanac</a>
+            <button type="button" class="values-toggle-button" onclick="toggleCompleterValuesYear()">Use 2014 Values</button>
+        </div>
+
+        <section class="completer-controls">
+            <div class="control-group">
+                <label for="current-region">Current Location</label>
+                <select id="current-region">
+                    {% for region in regions %}
+                        <option value="{{ region }}">{{ region }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="target-potion-type">Potion Type</label>
+                <select id="target-potion-type" onchange="populatePotionOptions()">
+                    <option value="Combat">Combat</option>
+                    <option value="Utility">Utility</option>
+                    <option value="Whimsy">Whimsy</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="target-potion">Desired Potion</label>
+                <select id="target-potion"></select>
+            </div>
+        </section>
+
+        <div class="button-group">
+            <button type="button" onclick="completeRecipe()">Find Missing Ingredient</button>
+            <button type="button" onclick="clearCompleterSelection()">Clear Inventory</button>
+        </div>
+
+        <form id="ingredientForm" class="form-section">
+            <div class="ingredient-columns">
+                <div class="column">
+                    <h3>Common Ingredients</h3>
+                    {% for ingredient in common_ingredients %}
+                        <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="common">
+                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                        </button><br><br>
+                    {% endfor %}
+                </div>
+
+                <div class="column">
+                    <h3>Uncommon Ingredients</h3>
+                    {% for ingredient in uncommon_ingredients %}
+                        <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="uncommon">
+                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                        </button><br><br>
+                    {% endfor %}
+                </div>
+
+                <div class="column">
+                    <h3>Rare Ingredients</h3>
+                    {% for ingredient in rare_ingredients %}
+                        <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="rare">
+                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                        </button><br><br>
+                    {% endfor %}
+                </div>
+            </div>
+        </form>
+
+        <div id="completer-results"></div>
+
+        <footer class="site-footer">
+            <p>Created by Urameshiya</p>
+            <p><a href="https://discord.gg/ZfdtQeAqV" target="_blank" rel="noopener noreferrer">Report any errors on the Obojima Discord server.</a></p>
+        </footer>
+    </div>
+
+    <script>
+        window.POTION_NAMES = {{ potion_names_json | safe }};
+    </script>
+    <script src="{{ url_for('static', filename='recipe_completer.js') }}"></script>
+</body>
+</html>

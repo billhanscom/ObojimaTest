@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obojima Potion Almanac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/rke0sfx.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Obojima Potion Almanac</h1>
+            <h2>Select Three or More Ingredients to Discover Potion Recipes</h2>
+        </header>
+
+        <!-- Button group at the top -->
+        <div class="button-group">
+            <button type="button" onclick="findRecipes()">Find Recipes</button>
+            <button type="button" onclick="clearSelection()">Clear Selection</button>
+            <button type="button" id="values-toggle-button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
+            <a class="nav-button" href="{{ url_for('recipe_completer') }}">Recipe Completer</a>
+        </div>
+
+        <!-- Ingredient selection form -->
+        <form id="ingredientForm" class="form-section">
+            <div class="ingredient-columns">
+                <!-- Common Ingredients Column -->
+                <div class="column">
+                    <h3>Common Ingredients</h3>
+                    {% for ingredient in common_ingredients %}
+                        <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="common">
+                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                        </button><br><br>
+                    {% endfor %}
+                </div>
+
+                <!-- Uncommon Ingredients Column -->
+                <div class="column">
+                    <h3>Uncommon Ingredients</h3>
+                    {% for ingredient in uncommon_ingredients %}
+                        <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="uncommon">
+                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                        </button><br><br>
+                    {% endfor %}
+                </div>
+
+                <!-- Rare Ingredients Column -->
+                <div class="column">
+                    <h3>Rare Ingredients</h3>
+                    {% for ingredient in rare_ingredients %}
+                        <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="rare">
+                            {{ ingredient['name'] }} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
+                        </button><br><br>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Button group below columns -->
+            <div class="button-group">
+                <button type="button" onclick="findRecipes()">Find Recipes</button>
+                <button type="button" onclick="clearSelection()">Clear Selection</button>
+                <button type="button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
+            </div>
+        </form>
+
+        <div id="results" class="recipe-columns">
+            <!-- Results will be displayed in this section -->
+        </div>
+        
+         <footer class="site-footer">
+            <p>Created by Urameshiya</p>
+            <p><a href="https://discord.gg/ZfdtQeAqV" target="_blank" rel="noopener noreferrer">Report any errors on the Obojima Discord server.</a></p>
+        </footer>
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
