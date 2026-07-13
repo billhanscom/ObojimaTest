@@ -267,7 +267,7 @@ h3 {
 
 .nav-button {
     display: inline-block;
-    background-color: #65ade8;
+    background-color: #DCA453;
     color: #ffffff;
     border: none;
     padding: 10px 18px;
@@ -281,7 +281,7 @@ h3 {
 }
 
 .nav-button:hover {
-    background-color: #005fa3;
+    background-color: #b8792e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -346,4 +346,10 @@ h3 {
         width: 100%;
         margin-bottom: 14px;
     }
+}
+
+
+.completer-bottom-buttons {
+    margin-top: 10px;
+    margin-bottom: 20px;
 }

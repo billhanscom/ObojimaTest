@@ -131,10 +131,7 @@ function renderCompleterResults(data) {
     if (data.already_complete && data.complete_recipes && data.complete_recipes.length > 0) {
         const message = document.createElement("p");
         message.className = "completer-empty";
-        const recipeWord =
-            data.complete_recipes.length === 1 ? "recipe" : "recipes";
-        message.textContent =
-            `Congratulations! You have already collected the ingredients needed to brew the selected potion using the following ${recipeWord}.`;
+        message.textContent = data.message || "Potion can be brewed using current inventory—no additional ingredients needed.";
         resultsDiv.appendChild(message);
 
         data.complete_recipes.forEach(recipe => {
@@ -210,4 +207,5 @@ function clearCompleterSelection() {
         button.classList.remove("selected", "common", "uncommon", "rare");
     });
     document.getElementById("completer-results").innerHTML = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }

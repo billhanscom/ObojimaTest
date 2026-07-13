@@ -1409,5 +1409,60 @@
         "utility": 19,
         "whimsy": 19,
         "rarity": "rare"
+    },
+    {
+        "name": "Canned Cat",
+        "combat": 1,
+        "utility": 8,
+        "whimsy": 9,
+        "rarity": "common",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
+    },
+    {
+        "name": "Slice of Melon Bird",
+        "combat": 2,
+        "utility": 9,
+        "whimsy": 3,
+        "rarity": "common",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
+    },
+    {
+        "name": "Hair from a Yanari",
+        "combat": 5,
+        "utility": 2,
+        "whimsy": 8,
+        "rarity": "common",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
+    },
+    {
+        "name": "Dried Pilot Leech",
+        "combat": 15,
+        "utility": 12,
+        "whimsy": 17,
+        "rarity": "uncommon",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
+    },
+    {
+        "name": "Tamh Gon's Confetti",
+        "combat": 0,
+        "utility": 0,
+        "whimsy": 17,
+        "rarity": "uncommon",
+        "regions": [
+            "Gift of Shuritashi"
+        ],
+        "source": "Obojima: Tales from Yatamon"
     }
 ]

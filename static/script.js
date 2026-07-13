@@ -157,4 +157,5 @@ function clearSelection() {
     });
 
     document.getElementById("results").innerHTML = '';
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
