@@ -11,6 +11,14 @@ body {
     color: #2d2d2d;
 }
 
+button,
+select,
+input,
+textarea,
+.nav-button {
+    font-family: var(--body-font);
+}
+
 .container {
     width: 80%;
     max-width: 1000px;
@@ -47,7 +55,7 @@ recipes-title {
     font-family: var(--body-font);
     font-size: 18px;
     color: #577da1;
-    font-weight: 700;    text-align: center;
+    font-weight: 400;    text-align: center;
     margin-top: 40px;
     padding-top: 20px; /* Ensure some padding to improve visibility */
 }
@@ -63,7 +71,7 @@ h3 {
     font-family: var(--body-font);
     font-size: 18px;
     color: #577da1;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
     border-bottom: 1px solid #577da1;
     padding-bottom: 12px;
@@ -229,7 +237,7 @@ h3 {
     text-align: center;
     font-family: var(--body-font);
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
     color: #DCA453;
     margin: 0 0 30px 0;
     padding-bottom: 12px;
@@ -252,7 +260,7 @@ h3 {
 
 .control-group label {
     display: block;
-    font-weight: 700;
+    font-weight: 400;
     color: #577da1;
     margin-bottom: 8px;
     text-align: center;
@@ -372,7 +380,7 @@ h3 {
     text-align: center;
     font-family: var(--body-font);
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 400;
     color: #577da1;
     margin: -14px 0 8px 0;
 }
@@ -380,7 +388,7 @@ h3 {
 #completer-results .completer-intro {
     margin: 0 0 12px 0;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 #completer-results .completion-card {
@@ -476,7 +484,7 @@ h3 {
     border-top: 1px solid rgba(87, 125, 161, 0.35);
     color: #577da1;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 400;
     margin: 8px 0 0 0;
     padding-top: 8px;
 }
@@ -514,6 +522,7 @@ h3 {
     margin: 0 0 8px 0;
     color: #577da1;
     font-size: 15px;
+    font-weight: 400;
     line-height: 1.25;
 }
 
@@ -585,7 +594,7 @@ h3 {
     padding: 8px 12px;
     border-radius: 4px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .skip-link:focus-visible {
@@ -611,7 +620,15 @@ h3 {
     font-size: 14px;
     line-height: 1;
     padding: 10px 14px;
-    font-weight: 700;
+    font-weight: 400;
+    background-color: #111111;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.button-group button.contrast-toggle-button:hover {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .button-group button:focus-visible,
@@ -666,6 +683,18 @@ body.high-contrast .button-group button:hover,
 body.high-contrast .nav-button:hover {
     background-color: #000000;
 }
+
+body.high-contrast .button-group button.contrast-toggle-button {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: none;
+}
+
+body.high-contrast .button-group button.contrast-toggle-button:hover {
+    background-color: #eeeeee;
+    color: #000000;
+}
+
 
 body.high-contrast .button-group button:focus-visible,
 body.high-contrast .nav-button:focus-visible,
