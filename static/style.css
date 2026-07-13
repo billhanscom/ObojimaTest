@@ -1,5 +1,10 @@
+:root {
+    --body-font: "Atkinson Hyperlegible", "rogliano", Arial, sans-serif;
+    --header-font: "sneakers-pro", sans-serif;
+}
+
 body {
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     margin: 0;
     padding: 0;
     background-color: #65ade8;
@@ -21,7 +26,7 @@ header {
 }
 
 h1 {
-    font-family: "sneakers-pro", sans-serif;
+    font-family: var(--header-font);
     font-size: 60px;
     font-weight: 500;
     font-style: normal;
@@ -30,7 +35,7 @@ h1 {
 }
 
 h2 {
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-weight: 400;
     font-style: normal;    
     font-size: 20px;
@@ -39,7 +44,7 @@ h2 {
 }
 
 recipes-title {
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-size: 18px;
     color: #577da1;
     font-weight: 700;    text-align: center;
@@ -48,14 +53,14 @@ recipes-title {
 }
 
 .recipes-title h2 {
-    font-family: "sneakers-pro", sans-serif;
+    font-family: var(--header-font);
     font-weight: 500;
     font-style: normal;
     color: #DCA453;
 }
 
 h3 {
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-size: 18px;
     color: #577da1;
     font-weight: 700;
@@ -81,7 +86,7 @@ h3 {
 }
 
 .ingredient-button {
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-weight: 400;
     font-style: normal;
     background-color: #ede1cd;
@@ -222,7 +227,7 @@ h3 {
     width: 100%;
     flex-basis: 100%;
     text-align: center;
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-size: 20px;
     font-weight: 700;
     color: #DCA453;
@@ -255,7 +260,7 @@ h3 {
 
 .control-group select {
     width: 100%;
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-size: 14px;
     color: #333;
     background-color: #ede1cd;
@@ -365,7 +370,7 @@ h3 {
 .completer-tally {
     width: 100%;
     text-align: center;
-    font-family: "rogliano", sans-serif;
+    font-family: var(--body-font);
     font-size: 17px;
     font-weight: 700;
     color: #577da1;
@@ -568,33 +573,53 @@ h3 {
     }
 }
 
+/* Accessibility helpers */
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    z-index: 1000;
+    transform: translateY(-160%);
+    background-color: #111111;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
 
 /* High-contrast mode */
-.top-button-group {
-    position: relative;
-}
-
-.top-button-group .contrast-toggle-button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 .button-group button.contrast-toggle-button {
-    min-width: 42px;
-    font-size: 18px;
+    min-width: 56px;
+    font-size: 14px;
     line-height: 1;
-    padding: 8px 11px;
-    background-color: #000000;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-    box-shadow: 0 0 0 2px #000000;
+    padding: 10px 14px;
+    font-weight: 700;
 }
 
-.button-group button.contrast-toggle-button:hover {
-    background-color: #333333;
-    box-shadow: 0 0 0 2px #000000;
+.button-group button:focus-visible,
+.nav-button:focus-visible,
+.ingredient-button:focus-visible,
+.control-group select:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 2px;
 }
 
 body.high-contrast {
@@ -633,13 +658,6 @@ body.high-contrast .ruleset-button.selected {
     color: #ffffff;
 }
 
-body.high-contrast .button-group button.contrast-toggle-button {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #000000;
-    box-shadow: 0 0 0 2px #ffffff;
-}
-
 body.high-contrast .nav-button {
     background-color: #7a4300;
 }
@@ -647,6 +665,13 @@ body.high-contrast .nav-button {
 body.high-contrast .button-group button:hover,
 body.high-contrast .nav-button:hover {
     background-color: #000000;
+}
+
+body.high-contrast .button-group button:focus-visible,
+body.high-contrast .nav-button:focus-visible,
+body.high-contrast .ingredient-button:focus-visible,
+body.high-contrast .control-group select:focus-visible {
+    outline-color: #000000;
 }
 
 body.high-contrast .ingredient-button,

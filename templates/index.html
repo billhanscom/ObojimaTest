@@ -6,9 +6,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://use.typekit.net/rke0sfx.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <a class="skip-link" href="#results">Skip to results</a>
     <div class="container">
         <header>
             <h1>Obojima Potion Almanac</h1>
@@ -17,11 +19,11 @@
 
         <!-- Button group at the top -->
         <div class="button-group top-button-group">
-            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" title="Toggle high contrast">◑</button>
             <button type="button" onclick="findRecipes()">Find Recipes</button>
             <button type="button" onclick="clearSelection()">Clear Selection</button>
             <button type="button" id="values-toggle-button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
             <a class="nav-button" href="{{ url_for('recipe_completer') }}">Ingredient Finder</a>
+            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
         </div>
 
         <!-- Ingredient selection form -->
@@ -66,7 +68,7 @@
             </div>
         </form>
 
-        <div id="results" class="recipe-columns">
+        <div id="results" class="recipe-columns" role="region" aria-live="polite" aria-label="Potion recipe results">
             <!-- Results will be displayed in this section -->
         </div>
         

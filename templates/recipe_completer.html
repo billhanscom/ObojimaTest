@@ -6,9 +6,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://use.typekit.net/rke0sfx.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <a class="skip-link" href="#completer-results">Skip to results</a>
     <div class="container">
         <header>
             <h1>Obojima Ingredient Finder</h1>
@@ -16,9 +18,9 @@
         </header>
 
         <div class="button-group top-button-group">
-            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" title="Toggle high contrast">◑</button>
             <a class="nav-button" href="{{ url_for('index') }}">Potion Almanac</a>
             <button type="button" class="values-toggle-button" onclick="toggleCompleterValuesYear()">Use 2014 Values</button>
+            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
         </div>
 
         <section class="completer-controls">
@@ -87,7 +89,7 @@
             <button type="button" onclick="clearCompleterSelection()">Clear Inventory</button>
         </div>
 
-        <div id="completer-results"></div>
+        <div id="completer-results" role="region" aria-live="polite" aria-label="Ingredient Finder results"></div>
 
         <p class="ingredient-source-note">* Ingredient from <cite>Obojima: Tales from Yatamon</cite>.</p>
 
