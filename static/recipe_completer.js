@@ -120,6 +120,38 @@ async function completeRecipe() {
     renderCompleterResults(data);
 }
 
+function formatCompleterIngredient(ingredient) {
+    const sourceMarker = ingredient.source === "Obojima: Tales from Yatamon" ? "*" : "";
+    return `${ingredient.name}${sourceMarker} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
+}
+
+function getUniqueRegions(results) {
+    const seen = new Set();
+    results.forEach(result => {
+        (result.availability_regions || []).forEach(region => seen.add(region));
+    });
+    return Array.from(seen).sort((a, b) => a.localeCompare(b));
+}
+
+function formatDesignation(distanceLabel, regions) {
+    if (distanceLabel === "Rare Ingredient") {
+        return "Rare Ingredient";
+    }
+
+    const regionCount = regions.length;
+    let label = distanceLabel;
+
+    if (distanceLabel === "Adjacent Region") {
+        label = regionCount === 1 ? "Adjacent Region" : "Adjacent Regions";
+    } else if (distanceLabel === "Distant Region") {
+        label = regionCount === 1 ? "Distant Region" : "Distant Regions";
+    } else if (distanceLabel === "Current Region") {
+        label = "Current Region";
+    }
+
+    return regionCount > 0 ? `${label} (${regions.join(", ")})` : label;
+}
+
 function renderCompleterResults(data) {
     const resultsDiv = document.getElementById("completer-results");
     resultsDiv.innerHTML = "";
@@ -135,24 +167,28 @@ function renderCompleterResults(data) {
         message.textContent = data.message || "Potion can be brewed using current inventory—no additional ingredients needed.";
         resultsDiv.appendChild(message);
 
+        const completeGrid = document.createElement("div");
+        completeGrid.className = "completion-grid";
+
         data.complete_recipes.forEach(recipe => {
             const card = document.createElement("div");
             card.className = "completion-card";
 
             const ingredientsList = recipe.owned_ingredients.map(ing => {
                 const rarityClass = ing.rarity.toLowerCase();
-                return `<li class="ingredient ${rarityClass}">${ing.name} [${ing.combat}-${ing.utility}-${ing.whimsy}]</li>`;
+                return `<li class="ingredient ${rarityClass}">${formatCompleterIngredient(ing)}</li>`;
             }).join("");
 
             card.innerHTML = `
                 <h4>Current Inventory Recipe</h4>
-                <p><strong>Completed Recipe:</strong> ${recipe.attribute_totals}</p>
-                <ul>${ingredientsList}</ul>
+                <p class="completion-meta"><strong>${recipe.attribute_totals}</strong></p>
+                <ul class="completion-recipe-list">${ingredientsList}</ul>
             `;
 
-            resultsDiv.appendChild(card);
+            completeGrid.appendChild(card);
         });
 
+        resultsDiv.appendChild(completeGrid);
         resultsDiv.scrollIntoView({behavior: "smooth"});
         return;
     }
@@ -169,13 +205,18 @@ function renderCompleterResults(data) {
     const tally = document.createElement("div");
     tally.className = "completer-tally";
     const completionCount = data.completion_count || 0;
-    tally.textContent = `${completionCount} ${completionCount === 1 ? "Ingredient" : "Ingredients"} Found That Complete This Recipe`;
+    tally.textContent = `${completionCount.toLocaleString()} ${completionCount === 1 ? "Ingredient" : "Ingredients"} Found That Complete a Recipe for the Selected Potion`;
     resultsDiv.appendChild(tally);
 
+    const bestRegions = getUniqueRegions(data.results);
+    const bestDesignation = formatDesignation(data.results[0].distance_label, bestRegions);
     const intro = document.createElement("p");
     intro.className = "completer-intro";
-    intro.textContent = `Best Available Options: ${data.results[0].distance_label}`;
+    intro.textContent = `Best Available ${data.results.length === 1 ? "Option" : "Options"}: ${bestDesignation}`;
     resultsDiv.appendChild(intro);
+
+    const grid = document.createElement("div");
+    grid.className = "completion-grid";
 
     data.results.forEach(result => {
         const card = document.createElement("div");
@@ -183,29 +224,27 @@ function renderCompleterResults(data) {
 
         const ingredient = result.missing_ingredient;
         const rarityClass = ingredient.rarity.toLowerCase();
-        const regionsText = result.availability_regions.length > 0
-            ? result.availability_regions.join(", ")
-            : "";
-        const availabilityText = regionsText
-            ? `${result.distance_label} — ${regionsText}`
-            : result.distance_label;
+        const cardRegions = result.availability_regions || [];
+        const cardDesignation = formatDesignation(result.distance_label, cardRegions);
 
         const ownedList = result.owned_ingredients.map(ing => {
             const ownedRarityClass = ing.rarity.toLowerCase();
-            return `<li class="ingredient ${ownedRarityClass}">${ing.name} [${ing.combat}-${ing.utility}-${ing.whimsy}]</li>`;
+            return `<li class="ingredient ${ownedRarityClass}">${formatCompleterIngredient(ing)}</li>`;
         }).join("");
 
         card.innerHTML = `
             <div class="completion-card-header">
-                <h4>Add: <span class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</span></h4>
-                <p class="completion-meta"><strong>${availabilityText}</strong> · ${result.attribute_totals}</p>
+                <h4>Add: <span class="ingredient ${rarityClass}">${formatCompleterIngredient(ingredient)}</span></h4>
+                <p class="completion-meta"><strong>${result.attribute_totals}</strong></p>
             </div>
-            <ul class="completion-recipe-list">${ownedList}<li class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</li></ul>
+            <ul class="completion-recipe-list">${ownedList}<li class="ingredient ${rarityClass}">${formatCompleterIngredient(ingredient)}</li></ul>
+            <p class="completion-region-footer">${cardDesignation}</p>
         `;
 
-        resultsDiv.appendChild(card);
+        grid.appendChild(card);
     });
 
+    resultsDiv.appendChild(grid);
     resultsDiv.scrollIntoView({behavior: "smooth"});
 }
 

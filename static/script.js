@@ -74,6 +74,12 @@ async function loadIngredientButtonsForCurrentYear() {
     });
 }
 
+
+function formatIngredientName(ingredient) {
+    const sourceMarker = ingredient.source === "Obojima: Tales from Yatamon" ? "*" : "";
+    return `${ingredient.name}${sourceMarker} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
+}
+
 async function findRecipes() {
     if (selectedIngredients.length < 3) {
         alert("Oops! Please select at least three ingredients.");
@@ -133,9 +139,7 @@ async function findRecipes() {
                 const ingredientsList = recipe.ingredients.map(ing => {
                     const rarityClass = ing.rarity.toLowerCase();
 
-                    return `<li class="ingredient ${rarityClass}">
-                        ${ing.name} [${ing.combat}-${ing.utility}-${ing.whimsy}]
-                    </li>`;
+                    return `<li class="ingredient ${rarityClass}">${formatIngredientName(ing)}</li>`;
                 }).join('');
 
                 return `<h4>${recipe.potion_type} ${recipe.attribute_totals}</h4><ul>${ingredientsList}</ul>`;

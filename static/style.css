@@ -423,3 +423,59 @@ h3 {
         white-space: normal;
     }
 }
+
+/* Unified ingredient result colors */
+#results li.ingredient.common,
+.completion-card .ingredient.common {
+    background-color: #c2e3a7;
+}
+
+#results li.ingredient.uncommon,
+.completion-card .ingredient.uncommon {
+    background-color: #fde663;
+}
+
+#results li.ingredient.rare,
+.completion-card .ingredient.rare {
+    background-color: #fd8966;
+}
+
+/* Three-column Recipe Finder/Ingredient Finder results */
+.completion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+#completer-results .completion-card {
+    margin: 0;
+}
+
+#completer-results .completion-card-header {
+    display: block;
+}
+
+#completer-results .completion-card-header h4 {
+    margin: 0 0 8px 0;
+}
+
+#completer-results .completion-meta {
+    margin: 0 0 8px 0;
+    white-space: normal;
+}
+
+.completion-region-footer {
+    border-top: 1px solid rgba(87, 125, 161, 0.35);
+    color: #577da1;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 8px 0 0 0;
+    padding-top: 8px;
+}
+
+@media (max-width: 800px) {
+    .completion-grid {
+        grid-template-columns: 1fr;
+    }
+}

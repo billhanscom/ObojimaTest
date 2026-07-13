@@ -140,7 +140,8 @@ def get_recipes():
                         "rarity": normalize_rarity(ing["rarity"]),
                         "combat": ing["combat"],
                         "utility": ing["utility"],
-                        "whimsy": ing["whimsy"]
+                        "whimsy": ing["whimsy"],
+                        "source": ing.get("source", "")
                     } for ing in combo
                 ]
             }
@@ -256,7 +257,8 @@ def complete_recipe():
                         "rarity": normalize_rarity(ing["rarity"]),
                         "combat": ing["combat"],
                         "utility": ing["utility"],
-                        "whimsy": ing["whimsy"]
+                        "whimsy": ing["whimsy"],
+                        "source": ing.get("source", "")
                     } for ing in owned_combo
                 ],
                 "attribute_totals": f"[{total_combat}-{total_utility}-{total_whimsy}]"
@@ -302,7 +304,8 @@ def complete_recipe():
                     "rarity": normalize_rarity(candidate["rarity"]),
                     "combat": candidate["combat"],
                     "utility": candidate["utility"],
-                    "whimsy": candidate["whimsy"]
+                    "whimsy": candidate["whimsy"],
+                    "source": candidate.get("source", "")
                 },
                 "owned_ingredients": [
                     {
@@ -310,7 +313,8 @@ def complete_recipe():
                         "rarity": normalize_rarity(ing["rarity"]),
                         "combat": ing["combat"],
                         "utility": ing["utility"],
-                        "whimsy": ing["whimsy"]
+                        "whimsy": ing["whimsy"],
+                        "source": ing.get("source", "")
                     } for ing in owned_pair
                 ],
                 "attribute_totals": f"[{total_combat}-{total_utility}-{total_whimsy}]",
@@ -333,9 +337,8 @@ def complete_recipe():
         deduped.values(),
         key=lambda r: (
             r["distance_rank"],
-            r["missing_ingredient"]["rarity"] != "common",
-            r["missing_ingredient"]["rarity"] != "uncommon",
-            r["missing_ingredient"]["name"]
+            {"common": 0, "uncommon": 1, "rare": 2}.get(r["missing_ingredient"]["rarity"], 9),
+            r["missing_ingredient"]["name"].casefold()
         )
     )
 
