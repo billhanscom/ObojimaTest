@@ -142,7 +142,7 @@ async function findRecipes() {
                     return `<li class="ingredient ${rarityClass}">${formatIngredientName(ing)}</li>`;
                 }).join('');
 
-                return `<h4>${recipe.potion_type} ${recipe.attribute_totals}</h4><ul>${ingredientsList}</ul>`;
+                return `<div class="recipe-card completion-card"><h4>${recipe.potion_type} ${recipe.attribute_totals}</h4><ul class="completion-recipe-list">${ingredientsList}</ul></div>`;
             }).join('');
         } else {
             column.innerHTML += '<p>No recipes found</p>';

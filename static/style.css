@@ -479,3 +479,89 @@ h3 {
         grid-template-columns: 1fr;
     }
 }
+
+/* Unified Almanac / Ingredient Finder result cards */
+.recipe-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.recipe-column h3 {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.recipe-card,
+.completion-card,
+#completer-results .completion-card {
+    background-color: #fff3c7;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 0;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.16);
+}
+
+.recipe-card h4,
+.completion-card h4 {
+    margin: 0 0 8px 0;
+    color: #577da1;
+    font-size: 15px;
+    line-height: 1.25;
+}
+
+.recipe-card ul,
+.completion-card ul,
+.completion-recipe-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#results .recipe-card li.ingredient,
+#completer-results .completion-card .ingredient,
+.completion-card .ingredient {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 7px 9px;
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 1.25;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+/* High-contrast ingredient colors for result cards */
+#results li.ingredient.common,
+.completion-card .ingredient.common,
+#completer-results .completion-card .ingredient.common {
+    background-color: #2f6f22;
+    color: #ffffff;
+}
+
+#results li.ingredient.uncommon,
+.completion-card .ingredient.uncommon,
+#completer-results .completion-card .ingredient.uncommon {
+    background-color: #ffe45c;
+    color: #1f1f1f;
+}
+
+#results li.ingredient.rare,
+.completion-card .ingredient.rare,
+#completer-results .completion-card .ingredient.rare {
+    background-color: #a8321f;
+    color: #ffffff;
+}
+
+#completer-results .completion-card-header h4 .ingredient {
+    margin-top: 6px;
+}
+
+/* Rename remaining UI language from Recipe Completer to Ingredient Finder in comments/use */
+@media (max-width: 800px) {
+    .recipe-column {
+        width: 100%;
+    }
+}
