@@ -166,9 +166,15 @@ function renderCompleterResults(data) {
         return;
     }
 
+    const tally = document.createElement("div");
+    tally.className = "completer-tally";
+    const completionCount = data.completion_count || 0;
+    tally.textContent = `${completionCount} ${completionCount === 1 ? "Ingredient" : "Ingredients"} Found That Complete This Recipe`;
+    resultsDiv.appendChild(tally);
+
     const intro = document.createElement("p");
     intro.className = "completer-intro";
-    intro.textContent = `Best available options: ${data.results[0].distance_label}`;
+    intro.textContent = `Best Available Options: ${data.results[0].distance_label}`;
     resultsDiv.appendChild(intro);
 
     data.results.forEach(result => {
@@ -190,10 +196,11 @@ function renderCompleterResults(data) {
         }).join("");
 
         card.innerHTML = `
-            <h4>Add: <span class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</span></h4>
-            <p><strong>Availability:</strong> ${availabilityText}</p>
-            <p><strong>Completed Recipe:</strong> ${result.attribute_totals}</p>
-            <ul>${ownedList}<li class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</li></ul>
+            <div class="completion-card-header">
+                <h4>Add: <span class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</span></h4>
+                <p class="completion-meta"><strong>${availabilityText}</strong> · ${result.attribute_totals}</p>
+            </div>
+            <ul class="completion-recipe-list">${ownedList}<li class="ingredient ${rarityClass}">${ingredient.name} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]</li></ul>
         `;
 
         resultsDiv.appendChild(card);

@@ -188,20 +188,22 @@ def ingredient_distance_label(ingredient, current_region):
     rarity = normalize_rarity(ingredient.get("rarity"))
     regions = ingredient.get("regions", [])
 
+    # Rare ingredients can technically be found anywhere, but they should only
+    # appear after all regionally available options have been exhausted.
     if rarity == "rare":
-        return 0, "Rare ingredient (available anywhere)", []
+        return 3, "Rare Ingredient", []
 
     if current_region in regions:
-        return 0, "Local", [current_region]
+        return 0, "Current Region", [current_region]
 
     nearby_regions = [region for region in regions if region in REGION_ADJACENCIES.get(current_region, [])]
     if nearby_regions:
-        return 1, "Adjacent region", nearby_regions
+        return 1, "Adjacent Region", nearby_regions
 
     if regions:
-        return 2, "Distant region", regions
+        return 2, "Distant Region", regions
 
-    return 3, "Unknown availability", []
+    return 2, "Distant Region", []
 
 
 @app.route('/recipe-completer')
@@ -317,9 +319,13 @@ def complete_recipe():
                 "availability_regions": availability_regions
             })
 
+    total_completing_ingredients = len({
+        result["missing_ingredient"]["name"] for result in possible_results
+    })
+
     deduped = {}
     for result in possible_results:
-        key = (result["missing_ingredient"]["name"], tuple(sorted(ing["name"] for ing in result["owned_ingredients"])))
+        key = result["missing_ingredient"]["name"]
         if key not in deduped or result["distance_rank"] < deduped[key]["distance_rank"]:
             deduped[key] = result
 
@@ -340,6 +346,7 @@ def complete_recipe():
     return jsonify({
         "target_potion": get_potion_display_name(target_type, target_value),
         "results": results,
+        "completion_count": total_completing_ingredients,
         "message": "No single ingredient completes this potion from your current inventory. Try selecting different ingredients or adding to your inventory."
     })
 

@@ -359,3 +359,67 @@ h3 {
     font-size: 0.95rem;
     text-align: center;
 }
+
+/* More compact Recipe Completer results */
+.completer-tally {
+    width: 100%;
+    text-align: center;
+    font-family: "rogliano", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #577da1;
+    margin: -14px 0 8px 0;
+}
+
+#completer-results .completer-intro {
+    margin: 0 0 12px 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#completer-results .completion-card {
+    padding: 10px 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+}
+
+.completion-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.completion-card-header h4 {
+    margin: 0;
+    line-height: 1.3;
+}
+
+.completion-meta {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    white-space: nowrap;
+}
+
+.completion-recipe-list {
+    margin: 8px 0 0 0;
+}
+
+#completer-results .completion-card .ingredient {
+    padding: 5px 8px;
+    margin: 3px 4px 3px 0;
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+    .completion-card-header {
+        display: block;
+    }
+
+    .completion-meta {
+        margin-top: 6px;
+        white-space: normal;
+    }
+}
