@@ -131,7 +131,10 @@ function renderCompleterResults(data) {
     if (data.already_complete && data.complete_recipes && data.complete_recipes.length > 0) {
         const message = document.createElement("p");
         message.className = "completer-empty";
-        message.textContent = data.message || "Potion can be brewed using current inventory—no additional ingredients needed.";
+        const recipeWord =
+            data.complete_recipes.length === 1 ? "recipe" : "recipes";
+        message.textContent =
+            `Congratulations! You have already collected the ingredients needed to brew the selected potion using the following ${recipeWord}.`;
         resultsDiv.appendChild(message);
 
         data.complete_recipes.forEach(recipe => {
