@@ -288,6 +288,9 @@ function renderCompleterResults(data) {
 }
 
 function clearCompleterSelection() {
+    const confirmed = window.confirm("Clear your entire saved inventory? This cannot be undone.");
+    if (!confirmed) return;
+
     selectedInventory = [];
     saveStoredInventory();
     document.querySelectorAll(".ingredient-button").forEach(button => {

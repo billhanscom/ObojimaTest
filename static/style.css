@@ -870,11 +870,11 @@ body.high-contrast .completion-region-footer {
 }
 
 .inventory-button-row {
-    margin-top: 4px;
+    margin-top: 10px;
 }
 
 .button-group button.inventory-button {
-    background-color: #b9b9b9;
+    background-color: #dedede;
     color: #333333;
     padding: 7px 12px;
     font-size: 13px;
@@ -883,7 +883,7 @@ body.high-contrast .completion-region-footer {
 }
 
 .button-group button.inventory-button:hover {
-    background-color: #9f9f9f;
+    background-color: #cfcfcf;
     color: #333333;
 }
 
@@ -894,6 +894,41 @@ body.high-contrast .button-group button.inventory-button {
 }
 
 body.high-contrast .button-group button.inventory-button:hover {
-    background-color: #ffffff;
+    background-color: #cfcfcf;
     color: #000000;
+}
+
+@media (max-width: 800px) {
+    /* mobile button-row spacing */
+    .inventory-button-row {
+        margin-top: 12px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    /* Maximum mobile ingredient-list tightening: remove template <br><br> gaps */
+    .ingredient-button + br,
+    .ingredient-button + br + br {
+        display: none !important;
+    }
+
+    .ingredient-button {
+        margin: 0 0 1px 0 !important;
+    }
+
+    .column {
+        margin-bottom: 6px !important;
+    }
+
+    .recipe-column {
+        margin-bottom: 6px !important;
+    }
+
+    #results .recipe-card li.ingredient,
+    #completer-results .completion-card .ingredient,
+    .completion-card .ingredient {
+        margin-top: 1px !important;
+        margin-bottom: 1px !important;
+    }
 }

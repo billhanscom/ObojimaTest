@@ -194,6 +194,9 @@ async function findRecipes() {
 }
 
 function clearSelection() {
+    const confirmed = window.confirm("Clear your entire saved inventory? This cannot be undone.");
+    if (!confirmed) return;
+
     selectedIngredients = [];
     saveStoredInventory();
 
