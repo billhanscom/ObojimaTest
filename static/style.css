@@ -857,20 +857,43 @@ body.high-contrast .completion-region-footer {
 }
 
 
-.inventory-row{
-  text-align:center;
-  margin-top:-10px;
-  margin-bottom:20px;
+
+
+/* Two-row top controls */
+.top-button-group {
+    margin-bottom: 28px;
 }
-.inventory-button{
-  background:#b9b9b9;
-  color:#333;
-  border:none;
-  padding:7px 12px;
-  font-size:13px;
-  border-radius:4px;
-  margin:4px;
-  cursor:pointer;
-  box-shadow:0 2px 4px rgba(0,0,0,.15);
+
+.primary-button-row,
+.inventory-button-row {
+    text-align: center;
 }
-.inventory-button:hover{background:#9f9f9f;}
+
+.inventory-button-row {
+    margin-top: 4px;
+}
+
+.button-group button.inventory-button {
+    background-color: #b9b9b9;
+    color: #333333;
+    padding: 7px 12px;
+    font-size: 13px;
+    margin: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.button-group button.inventory-button:hover {
+    background-color: #9f9f9f;
+    color: #333333;
+}
+
+body.high-contrast .button-group button.inventory-button {
+    background-color: #d0d0d0;
+    color: #000000;
+    box-shadow: inset 0 0 0 2px #000000;
+}
+
+body.high-contrast .button-group button.inventory-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}

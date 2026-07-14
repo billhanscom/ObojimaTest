@@ -19,11 +19,17 @@
         </header>
 
         <div class="button-group top-button-group">
-            <a class="nav-button" href="{{ url_for('index') }}">Potion Almanac</a>
-            <button type="button" onclick="exportInventory()">Save Inventory</button>
-            <button type="button" onclick="importInventory()">Load Inventory</button>
-            <button type="button" class="values-toggle-button" onclick="toggleCompleterValuesYear()">Use 2014 Values</button>
-            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
+            <div class="primary-button-row">
+                <button type="button" onclick="completeRecipe()">Find Missing Ingredients</button>
+                <button type="button" class="values-toggle-button" onclick="toggleCompleterValuesYear()">Use 2014 Values</button>
+                <a class="nav-button" href="{{ url_for('index') }}">Potion Almanac</a>
+                <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
+            </div>
+            <div class="inventory-button-row">
+                <button type="button" class="inventory-button" onclick="clearCompleterSelection()">Clear Inventory</button>
+                <button type="button" class="inventory-button" onclick="exportInventory()">Save Inventory</button>
+                <button type="button" class="inventory-button" onclick="importInventory()">Load Inventory</button>
+            </div>
         </div>
 
         <section class="completer-controls">
@@ -50,13 +56,6 @@
                 <select id="target-potion"></select>
             </div>
         </section>
-
-        <div class="button-group">
-            <button type="button" onclick="completeRecipe()">Find Missing Ingredients</button>
-            <button type="button" onclick="clearCompleterSelection()">Clear Inventory</button>
-            <button type="button" onclick="exportInventory()">Save Inventory</button>
-            <button type="button" onclick="importInventory()">Load Inventory</button>
-        </div>
 
         <h2 class="sr-only">Ingredient Selection</h2>
         <form id="ingredientForm" class="form-section">
@@ -89,13 +88,6 @@
                 </div>
             </div>
         </form>
-
-        <div class="button-group completer-bottom-buttons">
-            <button type="button" onclick="completeRecipe()">Find Missing Ingredients</button>
-            <button type="button" onclick="clearCompleterSelection()">Clear Inventory</button>
-            <button type="button" onclick="exportInventory()">Save Inventory</button>
-            <button type="button" onclick="importInventory()">Load Inventory</button>
-        </div>
 
         <h2 class="sr-only">Results</h2>
         <div id="completer-results" aria-live="polite" role="region" aria-label="Ingredient Finder results"></div>

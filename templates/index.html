@@ -20,13 +20,17 @@
 
         <!-- Button group at the top -->
         <div class="button-group top-button-group">
-            <button type="button" onclick="findRecipes()">Find Recipes</button>
-            <button type="button" onclick="clearSelection()">Clear Inventory</button>
-            <button type="button" onclick="exportInventory()">Save Inventory</button>
-            <button type="button" onclick="importInventory()">Load Inventory</button>
-            <button type="button" id="values-toggle-button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
-            <a class="nav-button" href="{{ url_for('recipe_completer') }}">Ingredient Finder</a>
-            <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
+            <div class="primary-button-row">
+                <button type="button" onclick="findRecipes()">Find Recipes</button>
+                <button type="button" id="values-toggle-button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
+                <a class="nav-button" href="{{ url_for('recipe_completer') }}">Ingredient Finder</a>
+                <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
+            </div>
+            <div class="inventory-button-row">
+                <button type="button" class="inventory-button" onclick="clearSelection()">Clear Inventory</button>
+                <button type="button" class="inventory-button" onclick="exportInventory()">Save Inventory</button>
+                <button type="button" class="inventory-button" onclick="importInventory()">Load Inventory</button>
+            </div>
         </div>
 
         <!-- Ingredient selection form -->
@@ -62,15 +66,6 @@
                         </button><br><br>
                     {% endfor %}
                 </div>
-            </div>
-
-            <!-- Button group below columns -->
-            <div class="button-group">
-                <button type="button" onclick="findRecipes()">Find Recipes</button>
-                <button type="button" onclick="clearSelection()">Clear Inventory</button>
-                <button type="button" onclick="exportInventory()">Save Inventory</button>
-                <button type="button" onclick="importInventory()">Load Inventory</button>
-                <button type="button" class="values-toggle-button" onclick="toggleValuesYear()">Use 2014 Values</button>
             </div>
         </form>
 
