@@ -20,6 +20,8 @@
 
         <div class="button-group top-button-group">
             <a class="nav-button" href="{{ url_for('index') }}">Potion Almanac</a>
+            <button type="button" onclick="exportInventory()">Save Inventory</button>
+            <button type="button" onclick="importInventory()">Load Inventory</button>
             <button type="button" class="values-toggle-button" onclick="toggleCompleterValuesYear()">Use 2014 Values</button>
             <button type="button" id="high-contrast-toggle" class="contrast-toggle-button" aria-pressed="false" aria-label="Turn on high contrast mode" title="Turn on high contrast">◐ HC</button>
         </div>
@@ -52,6 +54,8 @@
         <div class="button-group">
             <button type="button" onclick="completeRecipe()">Find Missing Ingredients</button>
             <button type="button" onclick="clearCompleterSelection()">Clear Inventory</button>
+            <button type="button" onclick="exportInventory()">Save Inventory</button>
+            <button type="button" onclick="importInventory()">Load Inventory</button>
         </div>
 
         <h2 class="sr-only">Ingredient Selection</h2>
@@ -89,6 +93,8 @@
         <div class="button-group completer-bottom-buttons">
             <button type="button" onclick="completeRecipe()">Find Missing Ingredients</button>
             <button type="button" onclick="clearCompleterSelection()">Clear Inventory</button>
+            <button type="button" onclick="exportInventory()">Save Inventory</button>
+            <button type="button" onclick="importInventory()">Load Inventory</button>
         </div>
 
         <h2 class="sr-only">Results</h2>

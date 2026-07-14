@@ -774,14 +774,16 @@ body.high-contrast .completion-region-footer {
         width: 100%;
         box-sizing: border-box;
         padding: 0;
-        margin-bottom: 24px;
+        margin-bottom: 12px;
     }
 
     .ingredient-button {
         display: block;
         width: 100%;
         box-sizing: border-box;
-        margin: 0 0 8px 0;
+        margin: 0 0 4px 0;
+        padding-top: 8px;
+        padding-bottom: 8px;
         text-align: left;
     }
 
@@ -791,7 +793,7 @@ body.high-contrast .completion-region-footer {
 
     .recipe-column {
         width: 100%;
-        margin-bottom: 24px;
+        margin-bottom: 14px;
     }
 
     .completer-controls {

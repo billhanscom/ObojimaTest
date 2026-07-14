@@ -1,5 +1,38 @@
-let selectedInventory = [];
+const OBOJIMA_INVENTORY_STORAGE_KEY = "obojimaIngredientInventory";
+let selectedInventory = loadStoredInventory();
 let currentValuesYear = localStorage.getItem("obojimaValuesYear") || "2024";
+
+function loadStoredInventory() {
+    try {
+        const stored = JSON.parse(localStorage.getItem(OBOJIMA_INVENTORY_STORAGE_KEY) || "[]");
+        return Array.isArray(stored) ? stored : [];
+    } catch (error) {
+        console.warn("Unable to load stored inventory.", error);
+        return [];
+    }
+}
+
+function saveStoredInventory() {
+    localStorage.setItem(OBOJIMA_INVENTORY_STORAGE_KEY, JSON.stringify(selectedInventory));
+}
+
+function normalizeInventoryList(items) {
+    if (!Array.isArray(items)) return [];
+    return Array.from(new Set(items.filter(item => typeof item === "string" && item.trim()).map(item => item.trim())));
+}
+
+function applyStoredInventoryToButtons() {
+    document.querySelectorAll(".ingredient-button").forEach(button => {
+        const ingredient = button.getAttribute("data-ingredient");
+        const rarityClass = button.getAttribute("data-rarity");
+        const isSelected = selectedInventory.includes(ingredient);
+
+        button.classList.toggle("selected", isSelected);
+        button.classList.toggle("common", isSelected && rarityClass === "common");
+        button.classList.toggle("uncommon", isSelected && rarityClass === "uncommon");
+        button.classList.toggle("rare", isSelected && rarityClass === "rare");
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     setupCompleterIngredientButtons();
@@ -22,6 +55,9 @@ function setupCompleterIngredientButtons() {
             } else {
                 selectedInventory.push(ingredient);
             }
+
+            selectedInventory = normalizeInventoryList(selectedInventory);
+            saveStoredInventory();
         });
     });
 }
@@ -30,7 +66,6 @@ function toggleCompleterValuesYear() {
     currentValuesYear = currentValuesYear === "2024" ? "2014" : "2024";
     localStorage.setItem("obojimaValuesYear", currentValuesYear);
 
-    clearCompleterSelection();
     updateCompleterValuesToggleButton();
     loadCompleterIngredientButtonsForCurrentYear();
 }
@@ -66,6 +101,10 @@ async function loadCompleterIngredientButtonsForCurrentYear() {
         const sourceMarker = ingredient.source === "Obojima: Tales from Yatamon" ? "*" : "";
         button.innerHTML = `${ingredient.name}${sourceMarker} [${ingredient.combat}-${ingredient.utility}-${ingredient.whimsy}]`;
     });
+
+    selectedInventory = normalizeInventoryList(selectedInventory);
+    saveStoredInventory();
+    applyStoredInventoryToButtons();
 }
 
 function populatePotionOptions() {
@@ -250,9 +289,59 @@ function renderCompleterResults(data) {
 
 function clearCompleterSelection() {
     selectedInventory = [];
+    saveStoredInventory();
     document.querySelectorAll(".ingredient-button").forEach(button => {
         button.classList.remove("selected", "common", "uncommon", "rare");
     });
     document.getElementById("completer-results").innerHTML = "";
     window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function exportInventory() {
+    const payload = {
+        app: "Obojima Potion Almanac",
+        version: 1,
+        dataset: currentValuesYear,
+        exportedAt: new Date().toISOString(),
+        ingredients: normalizeInventoryList(selectedInventory)
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "obojima-inventory.json";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+function importInventory() {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "application/json,.json";
+
+    input.addEventListener("change", () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            try {
+                const parsed = JSON.parse(reader.result);
+                const ingredients = Array.isArray(parsed) ? parsed : parsed.ingredients;
+                selectedInventory = normalizeInventoryList(ingredients);
+                saveStoredInventory();
+                applyStoredInventoryToButtons();
+                document.getElementById("completer-results").innerHTML = "";
+            } catch (error) {
+                alert("Sorry, that inventory file could not be loaded.");
+                console.error("Unable to import inventory.", error);
+            }
+        };
+        reader.readAsText(file);
+    });
+
+    input.click();
 }
