@@ -493,6 +493,21 @@ h3 {
     .completion-grid {
         grid-template-columns: 1fr;
     }
+
+    #results .recipe-card li.ingredient,
+    #completer-results .completion-card .ingredient,
+    .completion-card .ingredient {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .recipe-card,
+    .completion-card,
+    #completer-results .completion-card {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
 }
 
 /* Unified Almanac / Ingredient Finder result cards */
@@ -781,9 +796,7 @@ body.high-contrast .completion-region-footer {
         display: block;
         width: 100%;
         box-sizing: border-box;
-        margin: 0 0 4px 0;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        margin: 0 0 3px 0;
         text-align: left;
     }
 
@@ -793,7 +806,7 @@ body.high-contrast .completion-region-footer {
 
     .recipe-column {
         width: 100%;
-        margin-bottom: 14px;
+        margin-bottom: 10px;
     }
 
     .completer-controls {
@@ -809,6 +822,21 @@ body.high-contrast .completion-region-footer {
     .completion-grid {
         grid-template-columns: 1fr;
     }
+
+    #results .recipe-card li.ingredient,
+    #completer-results .completion-card .ingredient,
+    .completion-card .ingredient {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .recipe-card,
+    .completion-card,
+    #completer-results .completion-card {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
 }
 
 @media (max-width: 520px) {
@@ -827,3 +855,22 @@ body.high-contrast .completion-region-footer {
         margin-right: 3px;
     }
 }
+
+
+.inventory-row{
+  text-align:center;
+  margin-top:-10px;
+  margin-bottom:20px;
+}
+.inventory-button{
+  background:#b9b9b9;
+  color:#333;
+  border:none;
+  padding:7px 12px;
+  font-size:13px;
+  border-radius:4px;
+  margin:4px;
+  cursor:pointer;
+  box-shadow:0 2px 4px rgba(0,0,0,.15);
+}
+.inventory-button:hover{background:#9f9f9f;}
