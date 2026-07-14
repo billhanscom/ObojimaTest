@@ -914,7 +914,7 @@ body.high-contrast .button-group button.inventory-button:hover {
     }
 
     .ingredient-button {
-        margin: 0 0 1px 0 !important;
+        margin: 0 0 3px 0 !important;
     }
 
     .column {
@@ -928,7 +928,7 @@ body.high-contrast .button-group button.inventory-button:hover {
     #results .recipe-card li.ingredient,
     #completer-results .completion-card .ingredient,
     .completion-card .ingredient {
-        margin-top: 1px !important;
-        margin-bottom: 1px !important;
+        margin-top: 2px !important;
+        margin-bottom: 2px !important;
     }
 }
