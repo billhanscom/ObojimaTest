@@ -65,7 +65,7 @@
                     {% for ingredient in common_ingredients %}
                         <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="common">
                             {{ ingredient['name'] }}{% if ingredient.get('source') == 'Obojima: Tales from Yatamon' %}*{% endif %} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
-                        </button><br><br>
+                        </button>
                     {% endfor %}
                 </div>
 
@@ -74,7 +74,7 @@
                     {% for ingredient in uncommon_ingredients %}
                         <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="uncommon">
                             {{ ingredient['name'] }}{% if ingredient.get('source') == 'Obojima: Tales from Yatamon' %}*{% endif %} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
-                        </button><br><br>
+                        </button>
                     {% endfor %}
                 </div>
 
@@ -83,7 +83,7 @@
                     {% for ingredient in rare_ingredients %}
                         <button type="button" class="ingredient-button" data-ingredient="{{ ingredient['name'] }}" data-rarity="rare">
                             {{ ingredient['name'] }}{% if ingredient.get('source') == 'Obojima: Tales from Yatamon' %}*{% endif %} [{{ ingredient['combat'] }}-{{ ingredient['utility'] }}-{{ ingredient['whimsy'] }}]
-                        </button><br><br>
+                        </button>
                     {% endfor %}
                 </div>
             </div>
