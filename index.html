@@ -1,10 +1,117 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Obojima Foraging Model Lab</title><link rel="stylesheet" href="css/style.css"></head><body>
-<header><div><p class="eyebrow">DESIGNER'S WORKBENCH</p><h1>Obojima Foraging Model Lab</h1><p class="lede">Run the complete foraging model, spot unusual behavior, and test suggested changes without touching the live Potion Almanac.</p></div><div class="status" id="modelStatus">Ready</div></header>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Obojima Foraging Model Lab</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div>
+    <p class="eyebrow">DESIGNER'S WORKBENCH</p>
+    <h1>Obojima Foraging Model Lab</h1>
+    <p class="lede">Test the complete foraging model, understand what the results mean, try changes safely, and export an adjusted data set when the model feels right.</p>
+  </div>
+  <div class="status" id="modelStatus">Ready</div>
+</header>
 <main>
-<section class="hero panel"><div><h2>Full analysis</h2><p>The Lab tests every valid Region and Search Area automatically. It uses the same ingredient data and weighting rules as the current site.</p></div><div class="controls"><label>Depth<select id="trials"><option value="2000">Quick — 2,000 per location</option><option value="10000" selected>Standard — 10,000 per location</option><option value="100000">Deep — 100,000 per location</option></select></label><button id="run">Run Full Analysis</button></div><div class="progress"><div id="bar"></div></div><p id="progressText" class="muted">77 location combinations will be tested.</p></section>
-<section id="summary" class="hidden"><div class="score-grid"><article class="score"><span>Overall health</span><strong id="health">—</strong></article><article class="score"><span>Locations tested</span><strong id="locations">—</strong></article><article class="score"><span>Foraging searches</span><strong id="searches">—</strong></article><article class="score"><span>Rare results</span><strong id="rare">—</strong></article></div>
-<div class="panel"><h2>Recommendations</h2><p class="muted">Suggestions are written as design choices. Test them here first; the source data is not changed.</p><div id="recommendations"></div></div>
-<div class="panel"><div class="section-head"><div><h2>How each place behaves</h2><p class="muted">Average refinement should generally rise as Search Area civilization rises.</p></div><button class="secondary" id="exportReport">Download report</button></div><div id="areaTable" class="table-wrap"></div></div>
-<div class="panel"><h2>Ingredient coverage</h2><div id="coverage"></div></div></section>
-</main><footer>Standalone analysis copy • No changes are made to the live site</footer>
-<script src="js/data.js"></script><script src="js/worker-embedded.js"></script><script src="js/engine.js"></script><script src="js/app.js"></script></body></html>
+<section class="hero panel">
+  <div>
+    <h2>Run a full analysis</h2>
+    <p>The Lab automatically tests every valid Region and Search Area. It judges the model as a whole, points to the most important concerns, and suggests changes in plain language.</p>
+  </div>
+  <div class="controls">
+    <label>Depth
+      <select id="trials">
+        <option value="2000">Quick — 2,000 per location</option>
+        <option value="10000" selected>Standard — 10,000 per location</option>
+        <option value="100000">Deep — 100,000 per location</option>
+      </select>
+    </label>
+    <button id="run">Run Full Analysis</button>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+  <p id="progressText" class="muted">77 location combinations will be tested.</p>
+</section>
+
+<section id="summary" class="hidden">
+  <div class="score-grid">
+    <article class="score"><span>Overall health</span><strong id="health">—</strong><small id="healthLabel"></small></article>
+    <article class="score"><span>Refinement relationship</span><strong id="correlation">—</strong><small>Civilization vs. observed refinement</small></article>
+    <article class="score"><span>Locations tested</span><strong id="locations">—</strong><small id="searches">— searches</small></article>
+    <article class="score"><span>Rare results</span><strong id="rare">—</strong><small>Should remain zero</small></article>
+  </div>
+
+  <div class="panel executive">
+    <h2>What the analysis says</h2>
+    <div id="executiveSummary"></div>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <div><h2>Highest-impact recommendations</h2><p class="muted">Each suggestion identifies a design choice, tests it against the model, and lets you keep it only after you see the effect.</p></div>
+    </div>
+    <div id="recommendations"></div>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <div><h2>How each place behaves</h2><p class="muted">“Expected” is based on the overall relationship the model actually produces, not on the assumption that average refinement must equal Civilization.</p></div>
+      <button class="secondary" id="downloadAnalysis">Download analysis report</button>
+    </div>
+    <div id="areaTable" class="table-wrap"></div>
+  </div>
+
+  <div class="panel split">
+    <div><h2>Ingredient coverage</h2><div id="coverage"></div></div>
+    <div><h2>Selection fit</h2><div id="fitSummary"></div></div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <div>
+      <h2>Model workshop</h2>
+      <p class="muted">Changes made here are temporary until you download the adjusted data. They never alter the live Potion Almanac.</p>
+    </div>
+    <button class="secondary" id="resetModel">Reset all changes</button>
+  </div>
+  <div class="workshop-grid">
+    <div>
+      <h3>How civilized should a Search Area feel?</h3>
+      <label>Search Area<select id="areaEditor"></select></label>
+      <label class="range-label"><span>More wild</span><strong id="areaValue">—</strong><span>More civilized</span></label>
+      <input id="areaSlider" type="range" min="1" max="5" step="0.1">
+      <button id="saveArea">Keep this Search Area change</button>
+    </div>
+    <div>
+      <h3>Edit one ingredient</h3>
+      <label>Ingredient<select id="ingredientEditor"></select></label>
+      <div id="ingredientFields"></div>
+      <button id="saveIngredient">Keep ingredient changes</button>
+    </div>
+  </div>
+  <div id="changeLog" class="change-log"><strong>No temporary changes have been kept.</strong></div>
+</section>
+
+<section class="panel export-panel">
+  <div>
+    <h2>Download the adjusted model</h2>
+    <p>After testing and keeping changes, download a complete model data file or just the updated ingredient list. These files can be reviewed before anything is copied into the live site.</p>
+  </div>
+  <div class="export-actions">
+    <button id="downloadDataset">Download complete data set</button>
+    <button class="secondary" id="downloadIngredients">Download ingredients.json</button>
+    <button class="secondary" id="downloadAreas">Download search_areas.json</button>
+    <button class="secondary" id="downloadConfig">Download config.json</button>
+  </div>
+</section>
+</main>
+<footer>Standalone model laboratory • All changes remain local until you export them</footer>
+<script src="js/data.js"></script>
+<script src="js/worker-embedded.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
