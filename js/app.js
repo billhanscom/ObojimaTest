@@ -1,8 +1,98 @@
 'use strict';
 const $=s=>document.querySelector(s);let last=null,worker=null;
 const fmt=n=>new Intl.NumberFormat().format(Math.round(n));
-$('#run').onclick=run;
-function run(overrides={},callback=null){if(worker)worker.terminate();worker=new Worker(URL.createObjectURL(new Blob([LAB_WORKER_SOURCE],{type:'text/javascript'})));const trials=+$('#trials').value;$('#run').disabled=true;$('#modelStatus').textContent='Running';$('#bar').style.width='0%';$('#progressText').textContent='Preparing all 77 location combinations…';worker.onmessage=e=>{if(e.data.type==='progress'){const p=Math.min(100,e.data.done/e.data.total*100);$('#bar').style.width=p+'%';$('#progressText').textContent=`${p.toFixed(0)}% complete — ${fmt(e.data.done)} of ${fmt(e.data.total)} searches`;}else{last=e.data.result;$('#run').disabled=false;$('#modelStatus').textContent='Analysis complete';$('#bar').style.width='100%';render(last);if(callback)callback(last)}};worker.postMessage({trials,dc:18,degreeOfSuccess:5,overrides})}
+$('#run').onclick=()=>run();
+
+function setProgress(done,total){
+ const p=Math.min(100,total?done/total*100:0);
+ $('#bar').style.width=p+'%';
+ $('#progressText').textContent=`${p.toFixed(0)}% complete — ${fmt(done)} of ${fmt(total)} searches`;
+}
+
+function finishRun(result,callback){
+ last=result;
+ $('#run').disabled=false;
+ $('#modelStatus').textContent='Analysis complete';
+ $('#bar').style.width='100%';
+ render(last);
+ if(callback)callback(last);
+}
+
+function run(overrides={},callback=null){
+ if(worker){worker.terminate();worker=null;}
+ const trials=+$('#trials').value;
+ $('#run').disabled=true;
+ $('#modelStatus').textContent='Running';
+ $('#bar').style.width='0%';
+ $('#progressText').textContent='Preparing all 77 location combinations…';
+
+ // Blob workers are blocked by some browsers when index.html is opened directly
+ // from the filesystem. Try the worker first, then fall back automatically to
+ // a chunked main-thread simulation that remains fully self-contained.
+ try{
+  const blobUrl=URL.createObjectURL(new Blob([LAB_WORKER_SOURCE],{type:'text/javascript'}));
+  worker=new Worker(blobUrl);
+  URL.revokeObjectURL(blobUrl);
+  let started=false;
+  const fallback=()=>{
+   if(!worker)return;
+   worker.terminate();worker=null;
+   $('#progressText').textContent='Running in compatibility mode…';
+   runMainThread({trials,dc:18,degreeOfSuccess:5,overrides},p=>setProgress(p.done,p.total)).then(r=>finishRun(r,callback)).catch(showRunError);
+  };
+  const timer=setTimeout(()=>{if(!started)fallback()},1500);
+  worker.onmessage=e=>{
+   started=true;clearTimeout(timer);
+   if(e.data.type==='progress')setProgress(e.data.done,e.data.total);
+   else if(e.data.type==='complete'){worker.terminate();worker=null;finishRun(e.data.result,callback)}
+  };
+  worker.onerror=()=>{clearTimeout(timer);fallback()};
+  worker.postMessage({trials,dc:18,degreeOfSuccess:5,overrides});
+ }catch(err){
+  $('#progressText').textContent='Running in compatibility mode…';
+  runMainThread({trials,dc:18,degreeOfSuccess:5,overrides},p=>setProgress(p.done,p.total)).then(r=>finishRun(r,callback)).catch(showRunError);
+ }
+}
+
+function showRunError(err){
+ console.error(err);
+ $('#run').disabled=false;
+ $('#modelStatus').textContent='Could not run';
+ $('#progressText').textContent='The analysis stopped because of an unexpected error. Reload the page and try Quick analysis.';
+}
+
+async function runMainThread({trials=5000,dc=18,degreeOfSuccess=5,overrides={}},onProgress=()=>{}){
+ const eng=ObojimaLabEngine.createEngine(overrides);
+ const scenarios=[];
+ let done=0;
+ const total=eng.regions.reduce((s,r)=>s+r.search_areas.length,0)*trials;
+ const batchSize=100;
+ for(const r of eng.regions){
+  for(const area of r.search_areas){
+   const counts={},ref=[0,0,0,0,0,0],rarity={},fit={direct:0,related:0,none:0},geo={};
+   let finds=0;
+   for(let start=0;start<trials;start+=batchSize){
+    const end=Math.min(trials,start+batchSize);
+    for(let t=start;t<end;t++){
+     for(const x of eng.runHaul({region:r.name,area,dc,degreeOfSuccess})){
+      counts[x.name]=(counts[x.name]||0)+1;
+      ref[Math.round(x.refinementRelationship.ingredientValue)]++;
+      rarity[x.rarity]=(rarity[x.rarity]||0)+1;
+      fit[x.habitatRelationship]++;
+      geo[x.regionRelationship]=(geo[x.regionRelationship]||0)+1;
+      finds++;
+     }
+     done++;
+    }
+    onProgress({done,total});
+    await new Promise(resolve=>setTimeout(resolve,0));
+   }
+   const avg=ref.reduce((s,n,i)=>s+n*i,0)/(finds||1);
+   scenarios.push({region:r.name,area,civilization:+(eng.areas.find(a=>a.name===area)||{}).civilization||1,trials,finds,averageRefinement:avg,counts,refinementCounts:ref,rarityCounts:rarity,fitCounts:fit,geographyCounts:geo});
+  }
+ }
+ return{trials,dc,degreeOfSuccess,scenarios,ingredients:eng.ingredients.map(x=>({name:x.name,rarity:x.rarity,refinement:x.refinement,forageable:x.forageable,areas:x.associated_search_areas,regions:x.regions}))};
+}
 function assess(r){const issues=[];for(const s of r.scenarios){const d=s.averageRefinement-s.civilization;if(Math.abs(d)>.85)issues.push({type:'area',area:s.area,region:s.region,direction:d>0?'high':'low',delta:d,scenario:s})}
  const rare=r.scenarios.reduce((n,s)=>n+(s.rarityCounts.rare||0),0);if(rare)issues.unshift({type:'rare',count:rare});
  const avgByArea={};for(const s of r.scenarios)(avgByArea[s.area]??=[]).push(s.averageRefinement);const av=Object.fromEntries(Object.entries(avgByArea).map(([k,v])=>[k,v.reduce((a,b)=>a+b,0)/v.length]));if(av.Market&&av.Town&&av.Market-av.Town<.25)issues.push({type:'similar',a:'Market',b:'Town',gap:av.Market-av.Town,averages:av});
