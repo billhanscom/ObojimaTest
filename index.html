@@ -16,6 +16,72 @@
   <div class="status" id="modelStatus">Ready</div>
 </header>
 <main>
+
+
+<section class="panel profiler-lab" id="profilerLab">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">SEARCH AREA PROFILER</p>
+      <h2>See what a place feels like across every search tier</h2>
+      <p class="muted">Choose a Region and Search Area. The Profiler runs all nine DC and Degree of Success combinations, then turns the results into one readable profile.</p>
+    </div>
+    <div class="status" id="profilerStatus">Ready</div>
+  </div>
+  <div class="profiler-controls">
+    <label>Region<select id="profilerRegion"></select></label>
+    <label>Search Area<select id="profilerArea"></select></label>
+    <label>Depth<select id="profilerTrials"><option value="1000">Quick — 1,000 per scenario</option><option value="10000" selected>Standard — 10,000 per scenario</option><option value="100000">Research — 100,000 per scenario</option></select></label>
+    <label>Profile name<input id="profilerLabel" type="text" placeholder="Optional name"></label>
+    <button id="runProfiler">Run Search Area Profile</button>
+  </div>
+  <div class="progress"><div id="profilerBar"></div></div>
+  <p id="profilerProgress" class="muted">Nine scenarios will be tested.</p>
+  <div id="profilerResults" class="hidden">
+    <nav class="profile-tabs" aria-label="Profile results">
+      <button class="profile-tab active" data-tab="overview">Overview</button>
+      <button class="profile-tab" data-tab="progression">Progression</button>
+      <button class="profile-tab" data-tab="ingredients">Ingredients</button>
+      <button class="profile-tab" data-tab="compare">Compare</button>
+    </nav>
+    <div id="profileOverview" class="profile-view"></div>
+    <div id="profileProgression" class="profile-view hidden"></div>
+    <div id="profileIngredients" class="profile-view hidden"></div>
+    <div id="profileCompare" class="profile-view hidden"></div>
+  </div>
+</section>
+
+<section class="panel focused-lab">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">FOCUSED SEARCH SIMULATOR</p>
+      <h2>Test one particular search</h2>
+      <p class="muted">Choose the exact Region, Search Area, DC tier, and Degree of Success. Run the same search 1,000, 10,000, or 100,000 times, then save several runs for comparison.</p>
+    </div>
+    <div class="status" id="focusedStatus">Ready</div>
+  </div>
+  <div class="focused-controls">
+    <label>Region<select id="focusedRegion"></select></label>
+    <label>Search Area<select id="focusedArea"></select></label>
+    <label>DC Tier<select id="focusedDc"><option value="12">10–15: Common native</option><option value="18" selected>16–20: Uncommon native / Common non-native</option><option value="23">21–25: Uncommon non-native</option></select></label>
+    <label>Degree of Success<select id="focusedDos"><option value="2">Modest</option><option value="7" selected>Strong</option><option value="12">Exceptional</option></select></label>
+    <label>Number of searches<select id="focusedTrials"><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="100000">100,000</option></select></label>
+    <label>Run name<input id="focusedLabel" type="text" placeholder="Optional label"></label>
+    <button id="runFocused">Run Search Test</button>
+  </div>
+  <div class="progress"><div id="focusedBar"></div></div>
+  <p id="focusedProgress" class="muted">No focused test has been run.</p>
+  <div id="focusedResult" class="hidden"></div>
+</section>
+
+<section class="panel" id="comparisonPanel">
+  <div class="section-head">
+    <div><h2>Saved test runs</h2><p class="muted">Select two or more runs to compare. Percentages are normalized, so runs with different trial counts can still be compared fairly.</p></div>
+    <button class="secondary" id="clearRuns">Clear saved runs</button>
+  </div>
+  <div id="savedRuns"><p class="muted">Run a focused test to begin.</p></div>
+  <div id="comparisonResult"></div>
+</section>
+
 <section class="hero panel">
   <div>
     <h2>Run a full analysis</h2>
@@ -83,6 +149,7 @@
       <label>Search Area<select id="areaEditor"></select></label>
       <label class="range-label"><span>More wild</span><strong id="areaValue">—</strong><span>More civilized</span></label>
       <input id="areaSlider" type="range" min="1" max="5" step="0.1">
+      <fieldset><legend>Related Search Areas</legend><div id="relatedAreaFields" class="checkbox-grid"></div></fieldset>
       <button id="saveArea">Keep this Search Area change</button>
     </div>
     <div>
