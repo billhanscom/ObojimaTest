@@ -51,6 +51,7 @@ function applyCurrentDesignDraft(model){
  return model;
 }
 working=applyCurrentDesignDraft(working);
+const initialDesign=clone(working);
 
 $('#run').onclick=()=>runAnalysis();
 $('#resetModel').onclick=resetModel;
@@ -366,7 +367,35 @@ function populateProfilerAreas(){
  if(prev&&areas.includes(prev))sel.value=prev;
  else if(areas.includes('Sacred Site'))sel.value='Sacred Site';
 }
-$('#profilerRegion').onchange=populateProfilerAreas;
+function loadProfilerAreaSettings(){
+ const name=$('#profilerArea').value,row=working.searchAreas.find(x=>x.name===name);if(!row)return;
+ $('#profilerCivilization').value=row.civilization;
+ $('#profilerCivilizationValue').textContent=(+row.civilization).toFixed(1);
+ const others=working.searchAreas.map(x=>x.name).filter(x=>x!==name).sort((a,b)=>a.localeCompare(b));
+ $('#profilerRelatedAreas').innerHTML=others.map(area=>`<label><input type="checkbox" value="${esc(area)}" ${(row.related_search_areas||[]).includes(area)?'checked':''}> <span>${esc(area)}</span></label>`).join('');
+ updateProfilerSettingsNote();
+}
+function applyProfilerAreaSettings(){
+ const row=working.searchAreas.find(x=>x.name===$('#profilerArea').value);if(!row)return;
+ row.civilization=+$('#profilerCivilization').value;
+ row.related_search_areas=$$('#profilerRelatedAreas input:checked').map(x=>x.value).sort((a,b)=>a.localeCompare(b));
+}
+function updateProfilerSettingsNote(){
+ const name=$('#profilerArea').value,base=initialDesign.searchAreas.find(x=>x.name===name);if(!base)return;
+ const currentC=+$('#profilerCivilization').value;
+ const currentR=$$('#profilerRelatedAreas input:checked').map(x=>x.value).sort();
+ const changed=Math.abs(currentC-(+base.civilization))>.001||JSON.stringify(currentR)!==JSON.stringify([...(base.related_search_areas||[])].sort());
+ $('#profilerSettingsNote').textContent=changed?'Modified settings will be used for the next profile.':'Using the current model settings.';
+ $('#profilerSettingsNote').classList.toggle('modified',changed);
+}
+$('#profilerRegion').onchange=()=>{populateProfilerAreas();loadProfilerAreaSettings()};
+$('#profilerArea').onchange=loadProfilerAreaSettings;
+$('#profilerCivilization').oninput=()=>{$('#profilerCivilizationValue').textContent=(+$('#profilerCivilization').value).toFixed(1);updateProfilerSettingsNote()};
+$('#profilerRelatedAreas').onchange=updateProfilerSettingsNote;
+$('#resetProfilerArea').onclick=()=>{
+ const name=$('#profilerArea').value,base=initialDesign.searchAreas.find(x=>x.name===name),row=working.searchAreas.find(x=>x.name===name);if(!base||!row)return;
+ row.civilization=+base.civilization;row.related_search_areas=[...(base.related_search_areas||[])];loadProfilerAreaSettings();
+};
 
 async function simulateProfileScenario(engine,{region,area,dc,dos,trials},progress){
  const counts=new Map(),fit={direct:0,related:0,none:0},rarity={},geo={},ref={1:0,2:0,3:0,4:0,5:0};
@@ -432,6 +461,7 @@ function scenarioSummary(sc){
  return{avg,finds:sc.totalFinds/sc.trials,uncommon:pct(sc.rarityCounts.uncommon||0,sc.totalFinds),direct:pct(sc.fitCounts.direct||0,sc.totalFinds),related:pct(sc.fitCounts.related||0,sc.totalFinds)};
 }
 async function runProfiler(){
+ applyProfilerAreaSettings();
  const button=$('#runProfiler'),region=$('#profilerRegion').value,area=$('#profilerArea').value,trials=+$('#profilerTrials').value;
  if(!region||!area)return;button.disabled=true;$('#profilerStatus').textContent='Running';$('#profilerResults').classList.add('hidden');
  const engine=ObojimaLabEngine.createEngine(focusedSnapshot()),scenarios=[];let scenarioIndex=0;
@@ -495,3 +525,4 @@ function showProfileTab(name){
 }
 $$('.profile-tab').forEach(b=>b.onclick=()=>showProfileTab(b.dataset.tab));
 populateProfilerSelectors();
+loadProfilerAreaSettings();
